@@ -1,6 +1,6 @@
 {
   "languages": [
-    "Go (Currently enjoying the most)",
+    "Go",
     "Rust",
     "Ruby",
     "Javascript / Typescript",
@@ -22,8 +22,7 @@
     "Virtualbox",
     "Vagrant",
     "Ansible",
-    "Gulp",
-    "Makefile / Taskfile"
+    "Gulp"
   ],
   "frameworks": [
     "OpenTelemetry",
@@ -39,12 +38,11 @@
     "Message Brokers",
     "Kubernetes",
     "Nomad",
-    "gRPC / HTTP / REST / OAuth2",
-    "Event-Driven/SAGA Architecture",
-    "PostgreSQL / MongoDB / DyanamoDB",
-    "Git / Unit Testing / CI",
+    "Event-Driven Architecture",
     "Basic UNIX Admin",
-    "Nginx (SSL, Static asset caching)",
+    "gRPC / REST ",
+    "MySQL / PostgreSQL",
+    "MongoDB / DyanamoDB",
     "AWS / GCP / OCI"
   ]
 }
