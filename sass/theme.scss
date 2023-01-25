@@ -220,7 +220,7 @@ p > code {
 }
 
 .skills .skill-group {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     flex-basis: 50%;
 
     +mobile {
@@ -249,6 +249,10 @@ p > code {
 
 img {
     max-width: 100%;
+}
+
+li {
+    padding-bottom: 1em;
 }
 
 ::selection {
