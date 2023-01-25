@@ -3,7 +3,7 @@
     "Go",
     "Rust",
     "Ruby",
-    "Javascript / Typescript",
+    "Typescript",
     "Python",
     "Bash",
     "HTML5",
@@ -14,8 +14,9 @@
   ],
   "tools": [
     "Vim / VS Code",
-    "Tmux (Can't live without)",
+    "Tmux",
     "Z Shell",
+    "Firecracker",
     "Buildkit",
     "Containerd",
     "Docker",
@@ -38,11 +39,10 @@
     "Message Brokers",
     "Kubernetes",
     "Nomad",
-    "Event-Driven Architecture",
     "Basic UNIX Admin",
+    "PostgreSQL",
+    "DyanamoDB",
     "gRPC / REST ",
-    "MySQL / PostgreSQL",
-    "MongoDB / DyanamoDB",
     "AWS / GCP / OCI"
   ]
 }
