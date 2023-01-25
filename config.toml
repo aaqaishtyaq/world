@@ -1,0 +1,16 @@
+base_url = "https://next.aaqa.dev/"
+title = "Aaqa Ishtyaq"
+description = "Aaqa Ishtyaq, A Polyglot Software Engineer"
+compile_sass = true
+build_search_index = false
+generate_feed = true
+feed_filename = "rss.xml"
+
+[markdown]
+highlight_code = true
+highlight_theme = "gruvbox-dark"
+
+[extra]
+author = "Aaqa Ishtyaq"
+github = "aaqaishtyaq"
+twitter = "aaqaishtyaq"
