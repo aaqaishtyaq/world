@@ -215,13 +215,13 @@ p > code {
         flex-wrap: wrap;
          +mobile {
             flex-direction: column;
-             flex-wrap: nowrap;
+            flex-wrap: nowrap;
          }
 }
 
 .skills .skill-group {
-        margin-bottom: 2em;
-    flex-basis: 50%;
+    margin-bottom: 2em;
+    flex-basis: 51%;
 
     +mobile {
         margin-bottom: 1em;
