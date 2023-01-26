@@ -82,6 +82,9 @@ nav {
 
 .nav {
     display: inline;
+    a {
+        border-bottom: none;
+    }
 }
 
 ul {
