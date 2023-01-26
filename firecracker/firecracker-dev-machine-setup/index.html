@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="Aaqa Ishtyaq, A Polyglot Software Engineer">
+    
+
+    <title>Aaqa Ishtyaq</title>
+
+    
+    <link rel="stylesheet" href="https://next.aaqa.dev/theme.css">
+    
+
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://next.aaqa.dev/ rss.xml">
+    
+    
+</head>
+
+<body>
+    <div class="content">
+        
+        
+        <header>
+            <div class="header-left">
+                <a href="https:&#x2F;&#x2F;next.aaqa.dev&#x2F;" class="logo">Aaqa Ishtyaq</a>
+            </div>
+            <div class="header-right">
+                <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                    <ul>
+                        
+                        
+                        
+                        
+                        <li class="nav">
+                            <a itemprop="url" href="https://next.aaqa.dev/notes/">
+                                <span itemprop="name">Notes</span>
+                            </a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li class="nav">
+                            <a itemprop="url" href="https://next.aaqa.dev/uses/">
+                                <span itemprop="name">Uses</span>
+                            </a>
+                        </li>
+                        
+                        
+                        
+                        
+                        <li class="nav">
+                            <a itemprop="url" href="https://next.aaqa.dev/about/">
+                                <span itemprop="name">About</span>
+                            </a>
+                        </li>
+                        
+                        
+
+                        <li class="nav">
+                            <a itemprop="url" href="./rss.xml">
+                                <span itemprop="name">Feed</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        
+        <main>
+            
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <div itemprop="headline">
+        <h1>Firecracker Dev Machine Setup (GCP)</h1>
+        <div class="border"></div>
+        <time datetime="2023-01-26" class="date" itemprop="datePublished">
+            26 Jan 2023
+        </time>
+    </div>
+    <div itemprop="articleBody">
+        <p>VM on Google Compute Engine (GCE) supports nested virtualisation, unlike AWS, and allows to run KVM.
+We can create a VM on GCE to run and test Firecracker microVM.</p>
+<h3 id="here-are-the-steps">Here are the steps</h3>
+<ol>
+<li>
+<p>Setup GCP Project and Zone</p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fdf4c1;">FC_PROJECT</span><span style="color:#fe8019;">=</span><span style="color:#b8bb26;">your_name-firecracker
+</span><span style="color:#fdf4c1;">FC_REGION</span><span style="color:#fe8019;">=</span><span style="color:#b8bb26;">us-east1
+</span><span style="color:#fdf4c1;">FC_ZONE</span><span style="color:#fe8019;">=</span><span style="color:#b8bb26;">us-east1-b
+</span></code></pre>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fdf4c1;">gcloud config set project ${FC_PROJECT}
+</span><span style="color:#fdf4c1;">gcloud config set compute/region ${FC_REGION}
+</span><span style="color:#fdf4c1;">gcloud config set compute/zone ${FC_ZONE}
+</span></code></pre>
+</li>
+<li>
+<p>Create a VM image (Machine Image) able to run KVM</p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fdf4c1;">FC_VDISK</span><span style="color:#fe8019;">=</span><span style="color:#b8bb26;">disk-ub22
+</span><span style="color:#fdf4c1;">FC_IMAGE</span><span style="color:#fe8019;">=</span><span style="color:#b8bb26;">ub22-nested-kvm
+</span><span>
+</span><span style="color:#fdf4c1;">gcloud compute disks create ${FC_VDISK} \
+</span><span style="color:#fdf4c1;">  --image-project ubuntu-os-cloud \
+</span><span style="color:#fdf4c1;">  --image-family ubuntu-2204-lts
+</span><span>
+</span><span style="color:#fdf4c1;">gcloud compute images create ${FC_IMAGE} \
+</span><span style="color:#fdf4c1;">  --source-disk ${FC_VDISK} \
+</span><span style="color:#fdf4c1;">  --source-disk-zone ${FC_ZONE} \
+</span><span style="color:#fdf4c1;">  --licenses </span><span style="color:#b8bb26;">&quot;https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx&quot;
+</span></code></pre>
+</li>
+<li>
+<p>Create the VM</p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fdf4c1;">FC_VM</span><span style="color:#fe8019;">=</span><span style="color:#b8bb26;">firecracker-vm
+</span><span>
+</span><span style="color:#fdf4c1;">gcloud compute instances create ${FC_VM} \
+</span><span style="color:#fdf4c1;">  --zone ${FC_ZONE} \
+</span><span style="color:#fdf4c1;">  --image ${FC_IMAGE}
+</span></code></pre>
+</li>
+<li>
+<p>Connect to the VM via SSH.</p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fdf4c1;">gcloud compute ssh ${FC_VM}
+</span></code></pre>
+</li>
+<li>
+<p>Verify that VMX is enabled, enable KVM</p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fdf4c1;">$ grep -cw vmx /proc/cpuinfo
+</span><span style="color:#fdf4c1;">1
+</span><span style="color:#fdf4c1;">$ sudo setfacl -m u:${USER}:rw /dev/kvm
+</span><span style="color:#fdf4c1;">$ </span><span style="color:#fa5c4b;">[ </span><span style="color:#fe8019;">-</span><span style="color:#fdf4c1;">r /dev/kvm </span><span style="color:#fa5c4b;">] </span><span style="color:#fe8019;">&amp;&amp; </span><span style="color:#fabd2f;">[ </span><span style="color:#fdf4c1;">-w /dev/kvm </span><span style="color:#fabd2f;">] </span><span style="color:#fe8019;">&amp;&amp; </span><span style="color:#fabd2f;">echo </span><span style="color:#b8bb26;">&quot;OK&quot; </span><span style="color:#fe8019;">|| </span><span style="color:#fabd2f;">echo </span><span style="color:#b8bb26;">&quot;FAIL&quot;
+</span><span style="color:#fdf4c1;">OK
+</span></code></pre>
+</li>
+</ol>
+
+    </div>
+</article>
+
+        </main>
+        
+        <footer>
+            
+            <div class="border"></div>
+            <div class="footer">
+                <small class="footer-left">
+                    Copyright &copy; Aaqa Ishtyaq
+                </small>
+                <small class="footer-right">
+                    Links: <a href="https://github.com/aaqaishtyaq">Github</a> | <a
+                        href="https://linkedin.com/in/aaqaishtyaq">LinkedIn</a>
+                </small>
+            </div>
+            
+        </footer>
+        
+    </div>
+</body>
+
+</html>

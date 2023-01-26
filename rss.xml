@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Aaqa Ishtyaq</title>
+        <link>https://next.aaqa.dev/</link>
+        <description>Aaqa Ishtyaq, A Polyglot Software Engineer</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://next.aaqa.dev/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Thu, 26 Jan 2023 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Firecracker Dev Machine Setup (GCP)</title>
+            <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+            <link>https://next.aaqa.dev/firecracker/firecracker-dev-machine-setup/</link>
+            <guid>https://next.aaqa.dev/firecracker/firecracker-dev-machine-setup/</guid>
+            <description>&lt;p&gt;VM on Google Compute Engine (GCE) supports nested virtualisation, unlike AWS, and allows to run KVM.
+We can create a VM on GCE to run and test Firecracker microVM.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;here-are-the-steps&quot;&gt;Here are the steps&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Setup GCP Project and Zone&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;FC_PROJECT&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;your_name-firecracker
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;FC_REGION&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;us-east1
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;FC_ZONE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;us-east1-b
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;gcloud config set project ${FC_PROJECT}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;gcloud config set compute&#x2F;region ${FC_REGION}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;gcloud config set compute&#x2F;zone ${FC_ZONE}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a VM image (Machine Image) able to run KVM&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;FC_VDISK&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;disk-ub22
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;FC_IMAGE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;ub22-nested-kvm
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;gcloud compute disks create ${FC_VDISK} \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;  --image-project ubuntu-os-cloud \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;  --image-family ubuntu-2204-lts
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;gcloud compute images create ${FC_IMAGE} \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;  --source-disk ${FC_VDISK} \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;  --source-disk-zone ${FC_ZONE} \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;  --licenses &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;www.googleapis.com&#x2F;compute&#x2F;v1&#x2F;projects&#x2F;vm-options&#x2F;global&#x2F;licenses&#x2F;enable-vmx&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Create the VM&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;FC_VM&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;firecracker-vm
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;gcloud compute instances create ${FC_VM} \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;  --zone ${FC_ZONE} \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;  --image ${FC_IMAGE}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Connect to the VM via SSH.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;gcloud compute ssh ${FC_VM}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Verify that VMX is enabled, enable KVM&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;$ grep -cw vmx &#x2F;proc&#x2F;cpuinfo
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;1
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;$ sudo setfacl -m u:${USER}:rw &#x2F;dev&#x2F;kvm
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;$ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;[ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;r &#x2F;dev&#x2F;kvm &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;amp;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;[ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-w &#x2F;dev&#x2F;kvm &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;amp;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;OK&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;|| &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;FAIL&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;OK
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</description>
+        </item>
+        <item>
+            <title>Linux Container Networking from Scratch</title>
+            <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+            <link>https://next.aaqa.dev/notes/linux-container-networking/</link>
+            <guid>https://next.aaqa.dev/notes/linux-container-networking/</guid>
+            <description>&lt;p&gt;I will be using this &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;iximiuz.com&#x2F;en&#x2F;posts&#x2F;container-networking-is-simple&#x2F;&quot;&gt;iximiuz post&lt;&#x2F;a&gt; as the reference for this article series.&lt;&#x2F;p&gt;
+&lt;p&gt;We will be creating a fresh new VM using lima on macOS.
+You can create a new VM using VirtualBox, Vagrant, or even create a VM on OCI for free.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;isolation-based-on-network-namespace&quot;&gt;Isolation based on Network Namespace&lt;&#x2F;h2&gt;
+&lt;p&gt;The common thing that constitutes a network stack includes the:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Network Devices&lt;&#x2F;li&gt;
+&lt;li&gt;Routing Rules&lt;&#x2F;li&gt;
+&lt;li&gt;Netfilter Hooks&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;We can create a non-comprehensive &lt;code&gt;inspect-net-stack&lt;&#x2F;code&gt; script.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;#!&#x2F;usr&#x2F;bin&#x2F;env bash
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;&amp;gt; Network devices&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;ip link
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-e &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;\n&amp;gt; Route table&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;ip route
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-e &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;\n&amp;gt; Iptables rules&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;iptables --list-rules
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;After the execution of the inspect script on my machine produces the following input:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;% sudo .&#x2F;inspect-net-stack
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; Network &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;devices
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;1: lo: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;LOOPBACK,UP,LOWER_UP&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;link&#x2F;loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;2: eth0: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;BROADCAST,MULTICAST,UP,LOWER_UP&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;link&#x2F;ether 52:55:55:a3:ad:92 brd ff:ff:ff:ff:ff:ff
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;altname enp0s1
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; Route &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;table
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;default via 192.168.5.3 dev eth0 proto dhcp src 192.168.5.15 metric 100
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;192.168.5.0&#x2F;24 dev eth0 proto kernel scope link src 192.168.5.15 metric 100
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; Iptables &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;rules
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-P INPUT ACCEPT
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-P FORWARD ACCEPT
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-P OUTPUT ACCEPT
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;We want to make sure that each of the containers we are going to create soon will get a separate network stack.&lt;&#x2F;p&gt;
+&lt;p&gt;Linux namespaces used for container isolation are called &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;man7.org&#x2F;linux&#x2F;man-pages&#x2F;man8&#x2F;ip-netns.8.html&quot;&gt;network namespaces&lt;&#x2F;a&gt;. We won&#x27;t be creating the fully isolated container, rather restrict the scope to only the network stack. One of the ways to create a network stack is by using the &lt;code&gt;ip&lt;&#x2F;code&gt; tool, part of &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Iproute2&quot;&gt;&lt;code&gt;iproute2&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;% sudo ip netns add netns0
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;% ip netns
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;netns0
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;We have a new network namespace but to start using the network namespace, We can use a command called &lt;code&gt;nsenter&lt;&#x2F;code&gt;. It enters one or more of the specified namespaces and then executes the given program:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# This is create a new bash process under netns0 namespace
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;% sudo nsenter --net&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;&#x2F;var&#x2F;run&#x2F;netns&#x2F;netns0 bash
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;% sudo .&#x2F;inspect-net-stack
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; Network &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;devices
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;1: lo: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;LOOPBACK&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt; mtu 65536 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;link&#x2F;loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; Route &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;table
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; Iptables &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;rules
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-P INPUT ACCEPT
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-P FORWARD ACCEPT
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-P OUTPUT ACCEPT
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;As you can see from the above output, the &lt;code&gt;bash&lt;&#x2F;code&gt; process running inside the &lt;code&gt;netns0&lt;&#x2F;code&gt; namespace sees a different network stack. There are no routing rules and no custom iptables chain. Only one loopback device (&lt;code&gt;lo&lt;&#x2F;code&gt;).&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;                        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Network Namespace
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;┌─────────────────────────────────────────────────────────────────────┐
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│                                                                     │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│                                          Root Namespace             │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│                                                                     │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ lo0                    ┌────────────────────────────────────────┐   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ ┌─┐                    │                                        │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │                    │    lo0             Container Namespace │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │                    │    ┌─┐              netns0             │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │    ┌────────────┐  │    │ │                                 │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │    │            │  │    │ │  ┌───────────┐                  │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │    │ routes     │  │    │ │  │           │                  │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │    │            │  │    │ │  │routes     │                  │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │    └────────────┘  │    │ │  └───────────┘                  │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ └─┘                    │    └─┘                                 │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│                        │                                        │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ ┌─┐    ┌────────────┐  │         ┌───────────┐                  │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │    │            │  │         │           │                  │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │    │ iptables   │  │         │iptables   │                  │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │    │            │  │         └───────────┘                  │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │    └────────────┘  │                                        │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │                    │                                        │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ │ │                    │                                        │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ └─┘                    │                                        │   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│ eth0                   └────────────────────────────────────────┘   │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│                                                                     │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│                                                                     │
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;└─────────────────────────────────────────────────────────────────────┘
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;em&gt;Beware&lt;&#x2F;em&gt;: The &lt;code&gt;nsenter&lt;&#x2F;code&gt; command from above started a nested bash session in the netns0 network namespace. Don&#x27;t forget to exit from it.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;In the upcoming posts, I will discuss connecting the host with this namespace. Interconnecting various network switches, Just like patching the physical switch with a LAN cable.&lt;&#x2F;p&gt;
+</description>
+        </item>
+        <item>
+            <title>Open markdown links in a new tab</title>
+            <pubDate>Fri, 05 Jun 2020 00:00:00 +0000</pubDate>
+            <link>https://next.aaqa.dev/notes/hugo-open-markdown-new-tab/</link>
+            <guid>https://next.aaqa.dev/notes/hugo-open-markdown-new-tab/</guid>
+            <description>&lt;p&gt;I created a static website &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linkbin.aaqa.dev&#x2F;&quot;&gt;linkbin&lt;&#x2F;a&gt;, Where I could save links in a markdown file that can be viewed later.
+It is serving its purpose and because it uses &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gohugo.io&#x2F;&quot;&gt;hugo&lt;&#x2F;a&gt;, I don&#x27;t have to think about VPS cost.&lt;&#x2F;p&gt;
+&lt;p&gt;Recently, I ran into an issue where my website serves links but when you click on it, It will open the link in the same tab. Ugggh! I don&#x27;t want to close my website just to open a link. Ideally, it should open the link in a new tab.&lt;&#x2F;p&gt;
+&lt;p&gt;How can we do it? It would be easy Eh?&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-generic-way&quot;&gt;The generic way&lt;&#x2F;h2&gt;
+&lt;p&gt;Since markdown is eventually rendered as HTML, The most naive way I found was to write HTML in markdown&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;html&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;href=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;http:&#x2F;&#x2F;example.com&#x2F;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;target=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;_blank&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;example&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;No way, I am going to rewrite all my links into HTML. It adds cost later on as well. I will have to add HTML tags to write the link instead of this syntax:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;markdown&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-markdown &quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span&gt;[link](example.com)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;the-specialized-way&quot;&gt;The specialized way&lt;&#x2F;h2&gt;
+&lt;p&gt;This could vary depending upon the markdown parser you are using.
+If you&#x27;re using Jekyll, like this website, then you can use the following syntax to open links in a new tab.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;markdown&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-markdown &quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span&gt;[link](url){&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;:target&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;_blank&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;But, I am not using Jekyll for &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linkbin.aaqa.dev&quot;&gt;linkbin&lt;&#x2F;a&gt;. It uses a fairly newer version of &lt;a href=&quot;httpsP:&#x2F;&#x2F;gohugo.io&quot;&gt;Hugo&lt;&#x2F;a&gt;. Hugo ,&lt;code&gt;v0.62.0 or later&lt;&#x2F;code&gt;, uses &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;yuin&#x2F;goldmark&quot;&gt;Goldmark&lt;&#x2F;a&gt; parser and supports &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gohugo.io&#x2F;templates&#x2F;render-hooks&#x2F;&quot;&gt;Markdown render hooks&lt;&#x2F;a&gt;. Markdown Render Hooks offer you several ways to extend the default markdown behavior, e.g. resizing uploaded images, opening links in new tabs, or creating mermaid diagrams from code. You can do this by creating templates in the &lt;code&gt;layouts&#x2F;_default&#x2F;_markup&lt;&#x2F;code&gt; directory with base names &lt;code&gt;render-link&lt;&#x2F;code&gt; or &lt;code&gt;render-image&lt;&#x2F;code&gt; or &lt;code&gt;render-codeblock&lt;&#x2F;code&gt;. Your directory layout may look like this:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;console&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-console &quot;&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span&gt;layouts
+&lt;&#x2F;span&gt;&lt;span&gt;└── _default
+&lt;&#x2F;span&gt;&lt;span&gt;    └── _markup
+&lt;&#x2F;span&gt;&lt;span&gt;        ├── render-image.html
+&lt;&#x2F;span&gt;&lt;span&gt;        ├── render-image.rss.xml
+&lt;&#x2F;span&gt;&lt;span&gt;        ├── render-link.html
+&lt;&#x2F;span&gt;&lt;span&gt;        ├── render-codeblock.html
+&lt;&#x2F;span&gt;&lt;span&gt;        └── render-codeblock-bash.html
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;render-hook-to-open-link-in-a-new-tab&quot;&gt;Render hook to open link in a new tab&lt;&#x2F;h3&gt;
+&lt;p&gt;Add the following HTML template file (or render hook) at &lt;code&gt;layouts&#x2F;_default&#x2F;_markup&#x2F;render-link.html&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;html&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;href=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;{{ .Destination | safeURL }}&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;{{ with .Title}} title=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;{{ . }}&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;{{ end }}{{ if strings.HasPrefix .Destination &lt;&#x2F;span&gt;&lt;span style=&quot;background-color:#932b1e;color:#fdf4c1;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;http&lt;&#x2F;span&gt;&lt;span style=&quot;background-color:#932b1e;color:#fdf4c1;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt; }} target=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;_blank&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;rel=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;noopener&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;{{ end }}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;{{ .Text | safeHTML }}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;You&#x27;ll find that the links now open in a new tab!
+For internal blog links (which you would want to open in the same tab), you can use the relative link of the post, e.g. for an &lt;code&gt;other-post.md&lt;&#x2F;code&gt; file within the &lt;code&gt;posts&lt;&#x2F;code&gt; directory, you could use&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;markdown&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-markdown &quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span&gt;[Other post](&#x2F;posts&#x2F;other-post&#x2F;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;If I’ve missed something or made a horrible mistake if you have any questions regarding this article then feel free to ping me on Twitter. I’m
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;aaqaishtyaq&quot;&gt;@aaqaishtyaq&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</description>
+        </item>
+        <item>
+            <title>The Recipe of a great RESTful API</title>
+            <pubDate>Sun, 30 Dec 2018 00:00:00 +0000</pubDate>
+            <link>https://next.aaqa.dev/notes/recipe-of-great-rest-api/</link>
+            <guid>https://next.aaqa.dev/notes/recipe-of-great-rest-api/</guid>
+            <description>&lt;p&gt;I personally love writing APIs, it&#x27;s my favourite thing about backend
+development. As developers we interact with APIs all the time, to
+process payments with stripe, for geolocation with google maps, to retrieve
+tweets etc ...&lt;&#x2F;p&gt;
+&lt;p&gt;So what exactly makes a RESTful API great ? What can you do to
+ensure that it&#x27;s easy to use for other developers ? Let&#x27;s dive right in.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;responses&quot;&gt;Responses&lt;&#x2F;h2&gt;
+&lt;p&gt;In your responses, you should separate the metadata from the the body and put them in their own objects.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Example: GET &#x2F;api&#x2F;user&#x2F;2
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;meta&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;type&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;success&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;code&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d3869b;&quot;&gt;200&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;request_id&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;someid&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; etc ...
+&lt;&#x2F;span&gt;&lt;span&gt;    },
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;body&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: {
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;id&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d3869b;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;name&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;Aaqa&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;location&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;Delhi&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;job&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;Software Developer&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;When creating a new resource, always return a &lt;code&gt;201 created&lt;&#x2F;code&gt; instead of a &lt;code&gt;200 OK&lt;&#x2F;code&gt;. It&#x27;s a common mistake developers make.
+Another best practice is to return a url to the newly created resource in the location header of your response.
+You can also choose to send a serialised version of the resource in the response body. (I personally like to do that).&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Example: POST &#x2F;api&#x2F;users
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Response Headers
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Content-Type: application&#x2F;json
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; ...
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Location: https:&#x2F;&#x2F;yoursite.com&#x2F;api&#x2F;users&#x2F;2
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;meta&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;type&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;success&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;code&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d3869b;&quot;&gt;201&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;request_id&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;some_id&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    },
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;body&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: {
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;message&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;User successfully added&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;user&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: {
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;id&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d3869b;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;name&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;Harry_Potter&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;location&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;London&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;job&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;Auror&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;href&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;yoursite.com&#x2F;api&#x2F;users&#x2F;3&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;errors&quot;&gt;Errors&lt;&#x2F;h3&gt;
+&lt;p&gt;Properly dealing with errors is crucial to provide the best experience possible
+to your users.  Just like with normal responses, always include the status code in the meta part.&lt;&#x2F;p&gt;
+&lt;p&gt;You should also provide a nice descriptive message detailing the cause of the
+error as well as a potential solution to fix it.&lt;&#x2F;p&gt;
+&lt;p&gt;Doing this will help the consumers of your API to gracefully handle these errors on the client side. They will thank you for it.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;&#x2F;&#x2F; Example GET &#x2F;api&#x2F;secretendpoint
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;meta&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;type&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;error&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;status&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d3869b;&quot;&gt;401&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;request_id&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;weoifwe&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    },
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;body&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: {
+&lt;&#x2F;span&gt;&lt;span&gt;       &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;message&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;Unauthorized. Please login or create an account&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;status-codes&quot;&gt;Status codes&lt;&#x2F;h2&gt;
+&lt;p&gt;This part is subject to many passionate debates, apparently it&#x27;s a very touchy
+topic.&lt;&#x2F;p&gt;
+&lt;p&gt;Below I will list the most common status codes, what they mean and how I use
+them.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;200 - OK - Request went well, errthang&#x27;s fine.&lt;&#x2F;li&gt;
+&lt;li&gt;201 - Resource created - The resource was successfully saved to the database.&lt;&#x2F;li&gt;
+&lt;li&gt;204 - No Content - There used to be a resource at this endpoint but not
+anymore (Used for &lt;code&gt;DELETE&lt;&#x2F;code&gt; requests)&lt;&#x2F;li&gt;
+&lt;li&gt;400 - Bad request - The request was badly formatted. (ex: Invalid JSON)&lt;&#x2F;li&gt;
+&lt;li&gt;401 - Unauthorized - Authentication failed due to invalid credentials.&lt;&#x2F;li&gt;
+&lt;li&gt;403 - Forbidden - Authentication passed but the user does not have permission to access the resource&lt;&#x2F;li&gt;
+&lt;li&gt;404 - Not Found - Well, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=yX2vWL2b2Rc&quot;&gt;you know what it is&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;405 - Method Not Allowed - The HTTP verb used to interact with the resource is not allowed. (eg: User tried to POST to a GET only endpoint)&lt;&#x2F;li&gt;
+&lt;li&gt;409 - Conflict - The data passed in the payload conflicts with the resource in
+the server. (I return this status code in cases where a user creates&#x2F;updates a
+resource with a unique field constraint attached to it such as a username or
+email)&lt;&#x2F;li&gt;
+&lt;li&gt;422 - Unprocessable Entity - Again, another controversial one. I return a 422
+when the user sends an incomplete payload thereby violating the NOT NULL constraint attached to those fields.&lt;&#x2F;li&gt;
+&lt;li&gt;429 - Too many requests - You made too many requests.&lt;&#x2F;li&gt;
+&lt;li&gt;50x - Server Related Errors - Something went wrong server side.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;caching&quot;&gt;Caching&lt;&#x2F;h3&gt;
+&lt;p&gt;Caching is great and is a must when deploying an API. It helps a huge
+amount with performace by reducing server load as you are not required to
+perform the same action multiple times. You could choose to do it manually or use a reverse proxy like nginx or even something like varnish to handle that for you.&lt;&#x2F;p&gt;
+&lt;p&gt;Caching will return a &lt;code&gt;304 Not Modified&lt;&#x2F;code&gt; if the resource hasn&#x27;t changed. The great thing about this is that it does not affect your rate limiting, so there&#x27;s
+literally no excuse not to implement it.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;rate-limiting&quot;&gt;Rate Limiting&lt;&#x2F;h3&gt;
+&lt;p&gt;For security and performance reasons you want limit the amount of requests made
+against your API.
+You must return the maximum and remaining number of request allowed for a given user in a particular time window (which you are free to determine).&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;cors&quot;&gt;CORS&lt;&#x2F;h3&gt;
+&lt;p&gt;You want to enable CORS to allow requests from browsers using AJAX. This can
+be done by setting the following headers:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Access-Control-Allow-Origin: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;* &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# this means allow all domains to interact with the API
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Access-Control-Allow-Headers: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#928374;&quot;&gt;# All the headers you want to accept should be listed here
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;a-few-tips&quot;&gt;A few tips&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Return urls to resources and total count when GETting collections&lt;&#x2F;li&gt;
+&lt;li&gt;Map your endpoints to collections and resources&lt;&#x2F;li&gt;
+&lt;li&gt;Always use plural nouns (Ex: &#x2F;api&#x2F;users not &#x2F;api&#x2F;user)&lt;&#x2F;li&gt;
+&lt;li&gt;Actions on resources must be described with HTTP verbs&lt;&#x2F;li&gt;
+&lt;li&gt;for partial updates of resources use PATCH instead of PUT&lt;&#x2F;li&gt;
+&lt;li&gt;for versioning, use dates instead of numbers in the URL (foursquare does exactly that)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;If you have any comment, suggestions or remarks of any sort, you can ping
+me on twitter &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.twitter.com&#x2F;aaqaishtyaq&quot;&gt;@aaqaishtyaq&lt;&#x2F;a&gt; !&lt;&#x2F;p&gt;
+</description>
+        </item>
+    </channel>
+</rss>

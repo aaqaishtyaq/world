@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://next.aaqa.dev/</loc>
+    </url>
+    <url>
+        <loc>https://next.aaqa.dev/about/</loc>
+    </url>
+    <url>
+        <loc>https://next.aaqa.dev/firecracker/</loc>
+    </url>
+    <url>
+        <loc>https://next.aaqa.dev/firecracker/firecracker-dev-machine-setup/</loc>
+        <lastmod>2023-01-26</lastmod>
+    </url>
+    <url>
+        <loc>https://next.aaqa.dev/notes/</loc>
+    </url>
+    <url>
+        <loc>https://next.aaqa.dev/notes/hugo-open-markdown-new-tab/</loc>
+        <lastmod>2020-06-05</lastmod>
+    </url>
+    <url>
+        <loc>https://next.aaqa.dev/notes/linux-container-networking/</loc>
+        <lastmod>2023-01-26</lastmod>
+    </url>
+    <url>
+        <loc>https://next.aaqa.dev/notes/recipe-of-great-rest-api/</loc>
+        <lastmod>2018-12-30</lastmod>
+    </url>
+    <url>
+        <loc>https://next.aaqa.dev/uses/</loc>
+    </url>
+</urlset>

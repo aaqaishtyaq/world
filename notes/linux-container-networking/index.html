@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="Aaqa Ishtyaq, A Polyglot Software Engineer">
+    
+
+    <title>Aaqa Ishtyaq</title>
+
+    
+    <link rel="stylesheet" href="https://next.aaqa.dev/theme.css">
+    
+
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://next.aaqa.dev/ rss.xml">
+    
+    
+</head>
+
+<body>
+    <div class="content">
+        
+        
+        <header>
+            <div class="header-left">
+                <a href="https:&#x2F;&#x2F;next.aaqa.dev&#x2F;" class="logo">Aaqa Ishtyaq</a>
+            </div>
+            <div class="header-right">
+                <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                    <ul>
+                        
+                        
+                        
+                        
+                        <li class="nav">
+                            <a itemprop="url" href="https://next.aaqa.dev/notes/">
+                                <span itemprop="name">Notes</span>
+                            </a>
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li class="nav">
+                            <a itemprop="url" href="https://next.aaqa.dev/uses/">
+                                <span itemprop="name">Uses</span>
+                            </a>
+                        </li>
+                        
+                        
+                        
+                        
+                        <li class="nav">
+                            <a itemprop="url" href="https://next.aaqa.dev/about/">
+                                <span itemprop="name">About</span>
+                            </a>
+                        </li>
+                        
+                        
+
+                        <li class="nav">
+                            <a itemprop="url" href="./rss.xml">
+                                <span itemprop="name">Feed</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        
+        <main>
+            
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <div itemprop="headline">
+        <h1>Linux Container Networking from Scratch</h1>
+        <div class="border"></div>
+        <time datetime="2023-01-26" class="date" itemprop="datePublished">
+            26 Jan 2023
+        </time>
+    </div>
+    <div itemprop="articleBody">
+        <p>I will be using this <a rel="noopener" target="_blank" href="https://iximiuz.com/en/posts/container-networking-is-simple/">iximiuz post</a> as the reference for this article series.</p>
+<p>We will be creating a fresh new VM using lima on macOS.
+You can create a new VM using VirtualBox, Vagrant, or even create a VM on OCI for free.</p>
+<h2 id="isolation-based-on-network-namespace">Isolation based on Network Namespace</h2>
+<p>The common thing that constitutes a network stack includes the:</p>
+<ul>
+<li>Network Devices</li>
+<li>Routing Rules</li>
+<li>Netfilter Hooks</li>
+</ul>
+<p>We can create a non-comprehensive <code>inspect-net-stack</code> script.</p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="font-style:italic;color:#928374;">#!/usr/bin/env bash
+</span><span>
+</span><span style="color:#fabd2f;">echo </span><span style="color:#b8bb26;">&quot;&gt; Network devices&quot;
+</span><span style="color:#fdf4c1;">ip link
+</span><span>
+</span><span style="color:#fabd2f;">echo </span><span style="color:#fdf4c1;">-e </span><span style="color:#b8bb26;">&quot;\n&gt; Route table&quot;
+</span><span style="color:#fdf4c1;">ip route
+</span><span>
+</span><span style="color:#fabd2f;">echo </span><span style="color:#fdf4c1;">-e </span><span style="color:#b8bb26;">&quot;\n&gt; Iptables rules&quot;
+</span><span style="color:#fdf4c1;">iptables --list-rules
+</span></code></pre>
+<p>After the execution of the inspect script on my machine produces the following input:</p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fdf4c1;">% sudo ./inspect-net-stack
+</span><span style="color:#fe8019;">&gt;</span><span> Network </span><span style="color:#fdf4c1;">devices
+</span><span style="color:#fdf4c1;">1: lo: </span><span style="color:#fe8019;">&lt;</span><span style="color:#fdf4c1;">LOOPBACK,UP,LOWER_UP</span><span style="color:#fe8019;">&gt;</span><span style="color:#fdf4c1;"> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+</span><span>    </span><span style="color:#fdf4c1;">link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+</span><span style="color:#fdf4c1;">2: eth0: </span><span style="color:#fe8019;">&lt;</span><span style="color:#fdf4c1;">BROADCAST,MULTICAST,UP,LOWER_UP</span><span style="color:#fe8019;">&gt;</span><span style="color:#fdf4c1;"> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+</span><span>    </span><span style="color:#fdf4c1;">link/ether 52:55:55:a3:ad:92 brd ff:ff:ff:ff:ff:ff
+</span><span>    </span><span style="color:#fdf4c1;">altname enp0s1
+</span><span>
+</span><span style="color:#fe8019;">&gt;</span><span> Route </span><span style="color:#fdf4c1;">table
+</span><span style="color:#fdf4c1;">default via 192.168.5.3 dev eth0 proto dhcp src 192.168.5.15 metric 100
+</span><span style="color:#fdf4c1;">192.168.5.0/24 dev eth0 proto kernel scope link src 192.168.5.15 metric 100
+</span><span>
+</span><span style="color:#fe8019;">&gt;</span><span> Iptables </span><span style="color:#fdf4c1;">rules
+</span><span style="color:#fdf4c1;">-P INPUT ACCEPT
+</span><span style="color:#fdf4c1;">-P FORWARD ACCEPT
+</span><span style="color:#fdf4c1;">-P OUTPUT ACCEPT
+</span></code></pre>
+<p>We want to make sure that each of the containers we are going to create soon will get a separate network stack.</p>
+<p>Linux namespaces used for container isolation are called <a rel="noopener" target="_blank" href="https://man7.org/linux/man-pages/man8/ip-netns.8.html">network namespaces</a>. We won't be creating the fully isolated container, rather restrict the scope to only the network stack. One of the ways to create a network stack is by using the <code>ip</code> tool, part of <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Iproute2"><code>iproute2</code></a></p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fdf4c1;">% sudo ip netns add netns0
+</span><span style="color:#fdf4c1;">% ip netns
+</span><span style="color:#fdf4c1;">netns0
+</span></code></pre>
+<p>We have a new network namespace but to start using the network namespace, We can use a command called <code>nsenter</code>. It enters one or more of the specified namespaces and then executes the given program:</p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="font-style:italic;color:#928374;"># This is create a new bash process under netns0 namespace
+</span><span style="color:#fdf4c1;">% sudo nsenter --net</span><span style="color:#fe8019;">=</span><span style="color:#fdf4c1;">/var/run/netns/netns0 bash
+</span><span>
+</span><span>
+</span><span style="color:#fdf4c1;">% sudo ./inspect-net-stack
+</span><span style="color:#fe8019;">&gt;</span><span> Network </span><span style="color:#fdf4c1;">devices
+</span><span style="color:#fdf4c1;">1: lo: </span><span style="color:#fe8019;">&lt;</span><span style="color:#fdf4c1;">LOOPBACK</span><span style="color:#fe8019;">&gt;</span><span style="color:#fdf4c1;"> mtu 65536 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+</span><span>    </span><span style="color:#fdf4c1;">link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+</span><span>
+</span><span style="color:#fe8019;">&gt;</span><span> Route </span><span style="color:#fdf4c1;">table
+</span><span>
+</span><span style="color:#fe8019;">&gt;</span><span> Iptables </span><span style="color:#fdf4c1;">rules
+</span><span style="color:#fdf4c1;">-P INPUT ACCEPT
+</span><span style="color:#fdf4c1;">-P FORWARD ACCEPT
+</span><span style="color:#fdf4c1;">-P OUTPUT ACCEPT
+</span></code></pre>
+<p>As you can see from the above output, the <code>bash</code> process running inside the <code>netns0</code> namespace sees a different network stack. There are no routing rules and no custom iptables chain. Only one loopback device (<code>lo</code>).</p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span>                        </span><span style="color:#fdf4c1;">Network Namespace
+</span><span style="color:#fdf4c1;">┌─────────────────────────────────────────────────────────────────────┐
+</span><span style="color:#fdf4c1;">│                                                                     │
+</span><span style="color:#fdf4c1;">│                                          Root Namespace             │
+</span><span style="color:#fdf4c1;">│                                                                     │
+</span><span style="color:#fdf4c1;">│ lo0                    ┌────────────────────────────────────────┐   │
+</span><span style="color:#fdf4c1;">│ ┌─┐                    │                                        │   │
+</span><span style="color:#fdf4c1;">│ │ │                    │    lo0             Container Namespace │   │
+</span><span style="color:#fdf4c1;">│ │ │                    │    ┌─┐              netns0             │   │
+</span><span style="color:#fdf4c1;">│ │ │    ┌────────────┐  │    │ │                                 │   │
+</span><span style="color:#fdf4c1;">│ │ │    │            │  │    │ │  ┌───────────┐                  │   │
+</span><span style="color:#fdf4c1;">│ │ │    │ routes     │  │    │ │  │           │                  │   │
+</span><span style="color:#fdf4c1;">│ │ │    │            │  │    │ │  │routes     │                  │   │
+</span><span style="color:#fdf4c1;">│ │ │    └────────────┘  │    │ │  └───────────┘                  │   │
+</span><span style="color:#fdf4c1;">│ └─┘                    │    └─┘                                 │   │
+</span><span style="color:#fdf4c1;">│                        │                                        │   │
+</span><span style="color:#fdf4c1;">│ ┌─┐    ┌────────────┐  │         ┌───────────┐                  │   │
+</span><span style="color:#fdf4c1;">│ │ │    │            │  │         │           │                  │   │
+</span><span style="color:#fdf4c1;">│ │ │    │ iptables   │  │         │iptables   │                  │   │
+</span><span style="color:#fdf4c1;">│ │ │    │            │  │         └───────────┘                  │   │
+</span><span style="color:#fdf4c1;">│ │ │    └────────────┘  │                                        │   │
+</span><span style="color:#fdf4c1;">│ │ │                    │                                        │   │
+</span><span style="color:#fdf4c1;">│ │ │                    │                                        │   │
+</span><span style="color:#fdf4c1;">│ └─┘                    │                                        │   │
+</span><span style="color:#fdf4c1;">│ eth0                   └────────────────────────────────────────┘   │
+</span><span style="color:#fdf4c1;">│                                                                     │
+</span><span style="color:#fdf4c1;">│                                                                     │
+</span><span style="color:#fdf4c1;">└─────────────────────────────────────────────────────────────────────┘
+</span></code></pre>
+<p><em>Beware</em>: The <code>nsenter</code> command from above started a nested bash session in the netns0 network namespace. Don't forget to exit from it.</p>
+<hr />
+<p>In the upcoming posts, I will discuss connecting the host with this namespace. Interconnecting various network switches, Just like patching the physical switch with a LAN cable.</p>
+
+    </div>
+</article>
+
+        </main>
+        
+        <footer>
+            
+            <div class="border"></div>
+            <div class="footer">
+                <small class="footer-left">
+                    Copyright &copy; Aaqa Ishtyaq
+                </small>
+                <small class="footer-right">
+                    Links: <a href="https://github.com/aaqaishtyaq">Github</a> | <a
+                        href="https://linkedin.com/in/aaqaishtyaq">LinkedIn</a>
+                </small>
+            </div>
+            
+        </footer>
+        
+    </div>
+</body>
+
+</html>
