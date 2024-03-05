@@ -4,3 +4,6 @@
 
 # Zola
 public/
+static/processed_images
+static/hl-dark.css
+static/hl-light.css

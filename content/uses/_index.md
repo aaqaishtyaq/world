@@ -1,14 +1,14 @@
 +++
 title = "Uses"
-weight = 98
+weight = 101
 +++
 
 ## Hardware
 
-- **Apple Macbook Pro 15 (2019)**: Standard work issue Macbook Pro. 16GB RAM paired with dedicated GPU.
+- **Apple Macbook Pro 16 (2023)**: Standard work issue Macbook Pro. M2 Pro paired with 16GB RAM.
 - **Apple Macbook Pro 13 (2018)**: Personal MBP with 8GB RAM. A comfy size for travel and Netflix.
 - **Keychron K2 Keyboard**: Nice mechanical keyboard with Mac layout and Cherry MX Brown switches.
-- **Apple iPhone 11**: Using it over 3 years. Still usable with no issues and latest OS updates.
+- **Apple iPhone 15 Pro**: Switched to 15 Pro, Wow I missed USB-C after using 11 for around 4 years.
 - **Apple Airpods Pro**: Best for listening to music while working, relaxing and whatever the mood is.
 - **Bose QC 35II**: Use it for work meetings. All day comfort with excellent noise cancellation.
 - **Dell 24" 1080p Monitor**: I opted for 24" instead of 27" with 1080p. Does the job with decent sharpness.
