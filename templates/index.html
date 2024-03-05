@@ -46,7 +46,7 @@
                         {% endfor %}
 
                         <li class="nav">
-                            <a itemprop="url" href="./rss.xml">
+                            <a itemprop="url" href="rss.xml">
                                 <span itemprop="name">Feed</span>
                             </a>
                         </li>
@@ -73,7 +73,7 @@
                 </p>
 
                 <p class="head-row">
-                    {% set image = resize_image(path="static/images/aaqa.png", width=381, height=508, format="webp") %}
+                    {% set image = resize_image(path="static/images/aaqa.png", width=405, height=540, format="webp") %}
                     <img src="{{ image.url }}" class="image-block" />
                 </p>
             </div>

@@ -35,7 +35,7 @@ If you're using Jekyll, like this website, then you can use the following syntax
 
 But, I am not using Jekyll for [linkbin](https://linkbin.aaqa.dev). It uses a fairly newer version of [Hugo](httpsP://gohugo.io). Hugo ,`v0.62.0 or later`, uses [Goldmark](https://github.com/yuin/goldmark) parser and supports [Markdown render hooks](https://gohugo.io/templates/render-hooks/). Markdown Render Hooks offer you several ways to extend the default markdown behavior, e.g. resizing uploaded images, opening links in new tabs, or creating mermaid diagrams from code. You can do this by creating templates in the `layouts/_default/_markup` directory with base names `render-link` or `render-image` or `render-codeblock`. Your directory layout may look like this:
 
-``` shell
+```bash
 layouts
 └── _default
     └── _markup
