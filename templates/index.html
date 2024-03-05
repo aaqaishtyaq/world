@@ -65,19 +65,23 @@
                     My name is Aaqa Ishtyaq, I'm a Polyglot Software Engineer, with an interest in Distributed Systems
                     and Observability.<br /><br />
                     I've been writing code professionally for 5 years now, and as a hobby, since I was 12. I'm a massive
-                    cyberpunk nerd with an interest in open source and infrastructure. <br /><br />
-                    Currently, I'm in India, working remotely as a Senior Software Engineer at
-                    <a href="https://hackerrank.com">HackerRank</a>. <br /><br />
+                    cyberpunk nerd. I like to read books, take photos, and hike in the mountains near my place. <br /><br />
+                    I'm based out of India, working remotely as a Senior Software Engineer at
+                    <a href="https://hackerrank.com" class="hackerrank-work">HackerRank</a>. I work on their
+                    remote code execution system as part of the skills infrastructure engineering team.<br /><br />
                     The theme of my blog is software engineering, but I tend to derive broader life lessons from my
-                    retrospectives.<br /><br /> <br /><br />
+                    retrospectives.<br />
                 </p>
 
                 <p class="head-row">
-                    {% set image = resize_image(path="static/images/aaqa.png", width=405, height=540, format="webp") %}
+                    {% set image = resize_image(path="static/images/aaqa.png", width=438, height=584, format="webp") %}
                     <img src="{{ image.url }}" class="image-block" />
                 </p>
             </div>
 
+                <p>
+                    Here are some featured posts and pages:
+                </p>
             <ul>
                 {% set index = get_section(path="_index.md") %}
                 {% for s in index.subsections %}
@@ -89,12 +93,16 @@
                 </li>
                 {% if subsection.pages %}
                 <ul>
+                    <!-- https://github.com/getzola/zola/issues/147 -->
+                    {% set limit = 5 %}
                     {% for page in subsection.pages %}
-                    <li class="home-list">
-                        <a href="{{ page.permalink | safe}}">
-                            {{ page.title }}
-                        </a>
-                    </li>
+                        {% if loop.index <= limit %}
+                            <li class="home-list">
+                                <a href="{{ page.permalink | safe}}">
+                                    {{ page.title }}
+                                </a>
+                            </li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
                 {% endif %}

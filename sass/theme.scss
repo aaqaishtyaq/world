@@ -304,7 +304,7 @@ img {
 
 .image-block {
     filter: grayscale(95%);
-    transition: all .5s;
+    transition: all .4s;
 }
 
 .image-block:hover {
@@ -319,19 +319,7 @@ img {
     display: flex;
     flex-flow: row;
     align-items: stretch;
-    +mobile {
-            flex-direction: column;
-            flex-wrap: wrap;
-            flex-flow: column-reverse;
-        }
 }
-// .head-column .head-row {
-//     flex-basis: 100%;
-// }
-
-// .nav li {
-//     display: inline-block;
-// }
 
 @media (max-width: 1200px) {
     .head-column {
