@@ -2,10 +2,9 @@
 title = "Linux Container Networking from Scratch"
 date = "2023-01-26"
 +++
+In this article, we will be looking into setting up networking on a linux box from scratch.
 
-I will be using this [iximiuz post](https://iximiuz.com/en/posts/container-networking-is-simple/) as the reference for this article series.
-
-We will be creating a fresh new VM using lima on macOS.
+We will be creating a fresh new VM using Lima on macOS.
 You can create a new VM using VirtualBox, Vagrant, or even create a VM on OCI for free.
 
 ## Isolation based on Network Namespace
