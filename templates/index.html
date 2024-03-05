@@ -15,8 +15,8 @@
     {% include "og.html" %}
     {% block css %}
     <link rel="stylesheet" href="{{ get_url(path='theme.css', trailing_slash=false) | safe }}">
-    <link rel="preload" href="/hl-dark.css" as="css" type="text/css" crossorigin>
-    <link rel="preload" href="/hl-light.css" as="css" type="text/css" crossorigin>
+    <link rel="preload" href="/hl-dark.css" as="style" type="text/css" crossorigin>
+    <link rel="preload" href="/hl-light.css" as="style" type="text/css" crossorigin>
     {% endblock css %}
 
     {% block rss %}
