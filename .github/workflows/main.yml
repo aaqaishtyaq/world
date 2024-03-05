@@ -10,8 +10,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3.0.0
+
+      - name: set git safe dir
+        run: git config --global --add safe.directory '*'
+
       - name: build_and_deploy
-        uses: shalzz/zola-deploy-action@v0.16.1
+        uses: shalzz/zola-deploy-action@v0.18.0
         env:
           PAGES_BRANCH: gh-pages
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
