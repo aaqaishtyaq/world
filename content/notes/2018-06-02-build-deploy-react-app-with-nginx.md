@@ -182,7 +182,7 @@ touch mywebsiteconfig # File extension is not required in this case
 Next step is to edit the file using either vim or nano (sudo privileges may be
 required).
 
-```nginx
+```conf
 server {
 
     listen 80;

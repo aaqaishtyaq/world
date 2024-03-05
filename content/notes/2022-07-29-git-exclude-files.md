@@ -17,13 +17,13 @@ Add the path(s) to your file(s) which you would like to ignore to your `.git/inf
 
 In order to ignore changed files to being listed as modified, you can use the following git command:
 
-```console
+```bash
 git update-index --assume-unchanged <file-1> <file-2> <file-3>
 ```
 
 To revert that ignorance use the following command:
 
-```console
+```bash
 git update-index --no-assume-unchanged <file-1> <file-2> <file-3>
 ```
 
