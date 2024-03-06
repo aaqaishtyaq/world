@@ -1,4 +1,4 @@
-base_url = "https://next.aaqa.dev/"
+base_url = "https://aaqa.dev/"
 title = "Aaqa Ishtyaq"
 description = "Aaqa Ishtyaq, Ramblings on programming, tech and life."
 compile_sass = true
