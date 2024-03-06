@@ -120,6 +120,10 @@ a {
     border-bottom: 0.0625em solid;
 }
 
+.pgp {
+    border-bottom: 0.0625em dotted;
+}
+
 a:hover {
     background-color: var(--hovercolor);
     color: var(--white);
