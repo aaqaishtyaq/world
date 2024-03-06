@@ -15,8 +15,6 @@
     {% include "og.html" %}
     {% block css %}
     <link rel="stylesheet" href="{{ get_url(path='theme.css', trailing_slash=false) | safe }}">
-    <link rel="stylesheet preload" href="/hl-dark.css" as="style" type="text/css" crossorigin>
-    <link rel="stylesheet preload" href="/hl-light.css" as="style" type="text/css" crossorigin>
     {% endblock css %}
 
     {% block rss %}
@@ -25,9 +23,6 @@
     {% endblock %}
 
     {% block font %}
-    <link rel="preload" href="/fonts/iosevka-bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/iosevka-bolditalic.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/iosevka-italic.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/iosevka-regular.woff2" as="font" type="font/woff2" crossorigin>
     {% endblock font %}
 

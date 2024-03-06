@@ -2,24 +2,24 @@
 
 @font-face {
     font-family: 'Iosevka';
-    src: url("/fonts/iosevka-regular.woff2");
+    src: url("/fonts/iosevka-regular.woff2") format('woff2');
     font-display: swap;
 }
 @font-face {
     font-family: 'Iosevka';
-    src: url("/fonts/iosevka-italic.woff2");
+    src: url("/fonts/iosevka-italic.woff2") format('woff2');
     font-style: italic;
     font-display: swap;
 }
 @font-face {
     font-family: 'Iosevka';
-    src: url("/fonts/iosevka-bold.woff2");
+    src: url("/fonts/iosevka-bold.woff2") format('woff2');
     font-weight: bold;
     font-display: swap;
 }
 @font-face {
     font-family: 'Iosevka';
-    src: url("/fonts/iosevka-bolditalic.woff2");
+    src: url("/fonts/iosevka-bolditalic.woff2") format('woff2');
     font-weight: bold;
     font-style: italic;
     font-display: swap;
