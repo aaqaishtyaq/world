@@ -3,6 +3,8 @@ title = "Animal Farm by George Orwell: A Journey into Allegory"
 date = "2024-03-07"
 +++
 
+{{ resize_image(path="static/images/reading/animal_farm.jpg", width=1024, height=768, format="webp", caption="Generated using Adobe Firefly AI") }} \
+
 After completing [1984](/reading/1984-george-orwell), a friend suggested I read this book. As I ponder my recent exploration of George Orwell's "Animal Farm," I am engrossed by the depth of its messages and the profound wisdom nestled in its narrative. Crafted as an allegory, this timeless tale provides a poignant critique of authority, corruption, and the complexities of governance.
 
 From the outset, Orwell draws readers into the world of _Manor Farm_, where the animals rise against their human oppressors under the rallying cry of **"All animals are equal."** Led by the pigs, notably the clever and manipulative Napoleon and the idealistic Snowball, the animals establish their society based on the principles of Animalism. At first, their revolution seems to promise a utopian existence, free from the tyranny of human exploitation.

@@ -3,6 +3,8 @@ title = "The Idiot by Fyodor Dostoevsky: Navigating the Complexities of Humanity
 date = "2024-01-01"
 +++
 
+{{ resize_image(path="static/images/reading/the_idiot.jpg", width=1024, height=768, format="webp", caption="Generated using Adobe Firefly AI") }} \
+
 As I take a moment to contemplate my recent voyage through the intricacies of Fyodor Dostoevsky's masterpiece, "The Idiot", I find myself immersed in a whirlwind of emotions and reflections. This novel transcends mere storytelling; it delves deep into the essence of the human experience, brimming with layers of complexity and profound insights that linger long after the final chapter has been read.
 
 At the core of "The Idiot" lies Prince Myshkin, a character who eludes simplistic characterization. He embodies an extraordinary blend of compassion and empathy, yet is burdened by a naïveté and innocence that sharply contrast with the cynicism of the world around him. Myshkin's journey captivated me, drawing me towards his pure-heartedness and unyielding faith in the inherent goodness of humanity.
