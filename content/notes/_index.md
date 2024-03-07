@@ -1,5 +1,5 @@
 +++
 title = "Notes"
 sort_by = "date"
-weight = 1
+weight = 3
 +++
