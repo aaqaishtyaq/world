@@ -3,7 +3,7 @@ title = "Animal Farm by George Orwell: A Journey into Allegory"
 date = "2024-03-07"
 +++
 
-{{ resize_image(path="static/images/reading/animal_farm.jpg", width=1024, height=768, format="webp", caption="Generated using Adobe Firefly AI") }} \
+{{ resize_image(path="static/images/reading/animal_farm.jpg", width=1024, height=768, format="webp", caption="Image generated using Adobe Firefly AI") }} \
 
 After completing [1984](/reading/1984-george-orwell), a friend suggested I read this book. As I ponder my recent exploration of George Orwell's "Animal Farm," I am engrossed by the depth of its messages and the profound wisdom nestled in its narrative. Crafted as an allegory, this timeless tale provides a poignant critique of authority, corruption, and the complexities of governance.
 
