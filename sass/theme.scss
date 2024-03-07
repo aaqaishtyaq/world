@@ -199,7 +199,18 @@ p > code {
 
 .date {
     color: var(--fg4);
-    font-size: 14px;
+    font-size: 0.8750em;
+}
+
+.reading-time {
+    color: var(--fg4);
+    font-size: 0.8750em;
+}
+
+.page-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .border {
