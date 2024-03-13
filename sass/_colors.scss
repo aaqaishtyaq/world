@@ -39,7 +39,7 @@
   --visitedhov: #ffffff;
   --visitedhovbg: #1d1f21;
   --title: #1d1f21;
-  // --hackerrank: #62ff87;
+  --selection-fg: #ff98be;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,6 +86,6 @@
     --visitedhov: #fdf4c1;
     --visitedhovbg: #282828;
     --title: #eaeaea;
-    // --hackerrank: #62ff87;
+    --selection-fg: #3d0428;
   }
 }

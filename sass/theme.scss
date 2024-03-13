@@ -282,13 +282,11 @@ li {
 }
 
 ::selection {
-    background: var(--purple);
-    color: var(--bg_h);
+    background: var(--selection-fg);
 }
 
 a::selection {
-    background: var(--purple);
-    color: var(--bg_h);
+    background: var(--selection-fg);
 }
 .center {
     width: 50%;
