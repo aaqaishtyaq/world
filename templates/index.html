@@ -22,9 +22,15 @@
         }}">
     {% endblock %}
 
+    {% block beam_analytics %}
+    <script src="https://beamanalytics.b-cdn.net/beam.min.js" data-token="aa8756e9-c3cd-41e6-8a91-e3c8203201db"
+        async></script>
+    {% endblock %}
+
     {% block font %}
     <link rel="preload" href="/fonts/iosevka-regular.woff2" as="font" type="font/woff2" crossorigin>
     {% endblock font %}
+
 
     {% endblock head %}
 </head>
