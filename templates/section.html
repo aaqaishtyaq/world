@@ -3,6 +3,9 @@
 {% block main %}
     {% if section.pages %}
         <h1>{{ section.title }}</h1>
+        {% if section.description %}
+            <p>{{ section.description | markdown | safe }}</p>
+        {% endif %}
         <div class="border"></div>
         <ul>
         {% for p in section.pages %}

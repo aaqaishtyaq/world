@@ -11,7 +11,7 @@
             </time>
             <div class="reading-time">
                 {% set word_count = page.content | split(pat=" ") | length %}
-                {% set reading_time = (word_count / 250) | round %}
+                {% set reading_time = (word_count / 200) | round %}
                 <div>{{ word_count }} words, {{ reading_time }} minutes to read</div>
             </div>
         </div>
