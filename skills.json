@@ -1,0 +1,48 @@
+{
+  "languages": [
+    "Go",
+    "Rust",
+    "Ruby",
+    "Typescript",
+    "Python",
+    "Bash",
+    "HTML5",
+    "CSS3",
+    "Sass",
+    "SQL",
+    "Markdown"
+  ],
+  "tools": [
+    "Vim / VS Code",
+    "Tmux",
+    "Z Shell",
+    "Firecracker",
+    "Buildkit",
+    "Containerd",
+    "Docker",
+    "Virtualbox",
+    "Vagrant",
+    "Ansible",
+    "Gulp"
+  ],
+  "frameworks": [
+    "OpenTelemetry",
+    "Ruby on Rails",
+    "Scrapy",
+    "Django",
+    "Flask",
+    "Node.js",
+    "React.js",
+    "Mocha / Chai"
+  ],
+  "other": [
+    "Message Brokers",
+    "Kubernetes",
+    "Nomad",
+    "Basic UNIX Admin",
+    "PostgreSQL",
+    "DyanamoDB",
+    "gRPC / REST ",
+    "AWS / GCP / OCI"
+  ]
+}

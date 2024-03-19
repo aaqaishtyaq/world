@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Aaqa Ishtyaq - Today I Learned</title>
+      <link>https://aaqa.dev/tils/</link>
+      <description>Aaqa Ishtyaq, Ramblings on programming, tech and life.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://aaqa.dev/tils/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 19 Mar 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Move untracked git files to another directory</title>
+          <pubDate>Tue, 19 Mar 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://aaqa.dev/tils/move-git-untracked-files-to-temp-dir/</link>
+          <guid>https://aaqa.dev/tils/move-git-untracked-files-to-temp-dir/</guid>
+          <description xml:base="https://aaqa.dev/tils/move-git-untracked-files-to-temp-dir/">&lt;p&gt;I had a lot of files in a git repository, which I didn&#x27;t want to add in &lt;code&gt;git&lt;&#x2F;code&gt;, So to remove all of them
+to a temporary directory I used a collection of Unix commands.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;git&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; status&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;porcelain&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-pipe z-shell&quot;&gt;|&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;awk&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; &lt;span class=&quot;z-string z-quoted z-single z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;{print $2}&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-pipe z-shell&quot;&gt;|&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;xargs&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; mv&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;t&lt;&#x2F;span&gt; ..&#x2F;scratch&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</description>
+      </item>
+    </channel>
+</rss>
