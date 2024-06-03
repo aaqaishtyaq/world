@@ -318,12 +318,12 @@ img {
 }
 
 .image-block {
-    filter: grayscale(95%);
+    filter: grayscale(0);
     transition: all .4s;
 }
 
 .image-block:hover {
-    filter: grayscale(0);
+    filter: grayscale(95%);
 }
 
 .head-text {
