@@ -5,7 +5,7 @@ weight = 101
 
 ## Hardware
 
-- **Apple Macbook Pro 16 (2023)**: Standard work issue Macbook Pro. M2 Pro paired with 16GB RAM.
+- **Apple Macbook Pro 16 (2023)**: Work issued Macbook Pro. M3 Max Pro paired with 36GB RAM.
 - **Apple Macbook Pro 13 (2018)**: Personal MBP with 8GB RAM. A comfy size for travel and Netflix.
 - **Keychron K2 Keyboard**: Nice mechanical keyboard with Mac layout and Cherry MX Brown switches.
 - **Apple iPhone 15 Pro**: Switched to 15 Pro, Wow I missed USB-C after using 11 for around 4 years.
