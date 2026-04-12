@@ -1,0 +1,233 @@
+{
+  "notes/2018-01-08-algorithms-in-python-bubble-sort.md": {
+    "word_count": 487,
+    "reading_time_minutes": 4,
+    "prose_words": 487,
+    "code_lines": 45,
+    "diagram_lines": 0
+  },
+  "notes/2018-01-18-algorithms-in-python-quick-sort.md": {
+    "word_count": 450,
+    "reading_time_minutes": 3,
+    "prose_words": 450,
+    "code_lines": 25,
+    "diagram_lines": 0
+  },
+  "notes/2018-02-03-dont-be-scared-switch-to-vim.md": {
+    "word_count": 611,
+    "reading_time_minutes": 3,
+    "prose_words": 611,
+    "code_lines": 0,
+    "diagram_lines": 0
+  },
+  "notes/2018-02-05-mind-blowing-git-tips.md": {
+    "word_count": 825,
+    "reading_time_minutes": 4,
+    "prose_words": 825,
+    "code_lines": 6,
+    "diagram_lines": 0
+  },
+  "notes/2018-02-15-mind-blowing-python-tips.md": {
+    "word_count": 312,
+    "reading_time_minutes": 3,
+    "prose_words": 312,
+    "code_lines": 50,
+    "diagram_lines": 0
+  },
+  "notes/2018-03-28-basic-file-operations-in-python.md": {
+    "word_count": 692,
+    "reading_time_minutes": 4,
+    "prose_words": 692,
+    "code_lines": 31,
+    "diagram_lines": 0
+  },
+  "notes/2018-05-07-deploy-django-application-git.md": {
+    "word_count": 859,
+    "reading_time_minutes": 6,
+    "prose_words": 859,
+    "code_lines": 58,
+    "diagram_lines": 0
+  },
+  "notes/2018-05-08-the-ultimate-setup-for-remote-development.md": {
+    "word_count": 866,
+    "reading_time_minutes": 4,
+    "prose_words": 866,
+    "code_lines": 0,
+    "diagram_lines": 0
+  },
+  "notes/2018-05-09-the-ultimate-postgresql-cheatsheet.md": {
+    "word_count": 545,
+    "reading_time_minutes": 8,
+    "prose_words": 545,
+    "code_lines": 214,
+    "diagram_lines": 0
+  },
+  "notes/2018-06-02-build-deploy-react-app-with-nginx.md": {
+    "word_count": 1356,
+    "reading_time_minutes": 7,
+    "prose_words": 1356,
+    "code_lines": 46,
+    "diagram_lines": 0
+  },
+  "notes/2018-09-01-scrapy-splash-setup.md": {
+    "word_count": 453,
+    "reading_time_minutes": 3,
+    "prose_words": 453,
+    "code_lines": 18,
+    "diagram_lines": 0
+  },
+  "notes/2018-12-30-recipe-of-great-rest-api.md": {
+    "word_count": 698,
+    "reading_time_minutes": 5,
+    "prose_words": 698,
+    "code_lines": 50,
+    "diagram_lines": 0
+  },
+  "notes/2022-06-05-hugo-open-markdown-new-tab.md": {
+    "word_count": 385,
+    "reading_time_minutes": 3,
+    "prose_words": 385,
+    "code_lines": 5,
+    "diagram_lines": 8
+  },
+  "notes/2022-07-29-git-exclude-files.md": {
+    "word_count": 145,
+    "reading_time_minutes": 1,
+    "prose_words": 145,
+    "code_lines": 2,
+    "diagram_lines": 0
+  },
+  "notes/2023-01-26-firecracker-dev-machine-setup.md": {
+    "word_count": 64,
+    "reading_time_minutes": 1,
+    "prose_words": 64,
+    "code_lines": 25,
+    "diagram_lines": 0
+  },
+  "notes/2023-01-26-linux-container-networking.md": {
+    "word_count": 281,
+    "reading_time_minutes": 4,
+    "prose_words": 281,
+    "code_lines": 35,
+    "diagram_lines": 28
+  },
+  "notes/2024-03-19-move-git-untracked-files-to-temp-dir.md": {
+    "word_count": 36,
+    "reading_time_minutes": 1,
+    "prose_words": 36,
+    "code_lines": 1,
+    "diagram_lines": 0
+  },
+  "notes/2026-04-01-building-a-microvm-control-plane.md": {
+    "word_count": 882,
+    "reading_time_minutes": 6,
+    "prose_words": 882,
+    "code_lines": 0,
+    "diagram_lines": 35
+  },
+  "notes/2026-04-02-crash-resistant-machine-fsms.md": {
+    "word_count": 851,
+    "reading_time_minutes": 5,
+    "prose_words": 851,
+    "code_lines": 16,
+    "diagram_lines": 14
+  },
+  "notes/2026-04-03-how-a-worker-node-runs-a-microvm.md": {
+    "word_count": 1230,
+    "reading_time_minutes": 7,
+    "prose_words": 1230,
+    "code_lines": 0,
+    "diagram_lines": 19
+  },
+  "notes/2026-04-04-stateless-regional-control-plane-with-gossip-state.md": {
+    "word_count": 730,
+    "reading_time_minutes": 4,
+    "prose_words": 730,
+    "code_lines": 10,
+    "diagram_lines": 10
+  },
+  "notes/2026-04-05-fast-starts-snapshots-clones-and-warm-slots.md": {
+    "word_count": 930,
+    "reading_time_minutes": 5,
+    "prose_words": 930,
+    "code_lines": 4,
+    "diagram_lines": 6
+  },
+  "notes/2026-04-06-private-networking-for-microvms-wireguard-ipv6.md": {
+    "word_count": 800,
+    "reading_time_minutes": 4,
+    "prose_words": 800,
+    "code_lines": 5,
+    "diagram_lines": 7
+  },
+  "notes/2026-04-07-making-internal-dns-boring.md": {
+    "word_count": 700,
+    "reading_time_minutes": 4,
+    "prose_words": 700,
+    "code_lines": 0,
+    "diagram_lines": 11
+  },
+  "notes/2026-04-08-why-we-built-our-own-machine-proxy.md": {
+    "word_count": 728,
+    "reading_time_minutes": 4,
+    "prose_words": 728,
+    "code_lines": 4,
+    "diagram_lines": 16
+  },
+  "notes/2026-04-09-host-reconciliation-with-a-host-agent.md": {
+    "word_count": 735,
+    "reading_time_minutes": 4,
+    "prose_words": 735,
+    "code_lines": 4,
+    "diagram_lines": 7
+  },
+  "notes/2026-04-10-observability-for-a-microvm-platform.md": {
+    "word_count": 669,
+    "reading_time_minutes": 4,
+    "prose_words": 669,
+    "code_lines": 8,
+    "diagram_lines": 7
+  },
+  "notes/2026-04-11-scheduling-dense-compute-without-lying-to-yourself.md": {
+    "word_count": 624,
+    "reading_time_minutes": 3,
+    "prose_words": 624,
+    "code_lines": 3,
+    "diagram_lines": 0
+  },
+  "notes/2026-04-12-what-ai-infrastructure-needs-from-microvms.md": {
+    "word_count": 810,
+    "reading_time_minutes": 4,
+    "prose_words": 810,
+    "code_lines": 0,
+    "diagram_lines": 10
+  },
+  "reading/2024-01-01-the-idiot-fyodor-dostoevsky.md": {
+    "word_count": 253,
+    "reading_time_minutes": 2,
+    "prose_words": 253,
+    "code_lines": 0,
+    "diagram_lines": 0
+  },
+  "reading/2024-02-03-1984-george-orwell.md": {
+    "word_count": 274,
+    "reading_time_minutes": 2,
+    "prose_words": 274,
+    "code_lines": 0,
+    "diagram_lines": 0
+  },
+  "reading/2024-03-07-animal-farm-george-orwell.md": {
+    "word_count": 272,
+    "reading_time_minutes": 2,
+    "prose_words": 272,
+    "code_lines": 0,
+    "diagram_lines": 0
+  },
+  "travel/2024-03-05-fairy-forest-pulga-kalga.md": {
+    "word_count": 93,
+    "reading_time_minutes": 1,
+    "prose_words": 93,
+    "code_lines": 0,
+    "diagram_lines": 0
+  }
+}

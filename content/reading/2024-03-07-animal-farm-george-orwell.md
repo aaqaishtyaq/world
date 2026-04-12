@@ -1,23 +1,21 @@
 +++
-title = "Animal Farm by George Orwell: A Journey into Allegory"
+title = "Animal Farm by George Orwell"
 date = "2024-03-07"
 +++
 
-{{ resize_image(path="static/images/reading/animal_farm.jpg", width=1024, height=768, format="webp", caption="Image generated using Adobe Firefly AI") }} \
+{{ resize_image(path="static/images/reading/animal_farm.jpg", width=1024, height=768, format="webp", caption="Image generated using Adobe Firefly AI") }}
 
-After completing [1984](/reading/1984-george-orwell), a friend suggested I read this book. As I ponder my recent exploration of George Orwell's "Animal Farm," I am engrossed by the depth of its messages and the profound wisdom nestled in its narrative. Crafted as an allegory, this timeless tale provides a poignant critique of authority, corruption, and the complexities of governance.
+I picked up _Animal Farm_ right after [1984](/reading/1984-george-orwell). I expected something smaller and easier. It is smaller. It is not easier.
 
-From the outset, Orwell draws readers into the world of _Manor Farm_, where the animals rise against their human oppressors under the rallying cry of **"All animals are equal."** Led by the pigs, notably the clever and manipulative Napoleon and the idealistic Snowball, the animals establish their society based on the principles of Animalism. At first, their revolution seems to promise a utopian existence, free from the tyranny of human exploitation.
+The plot is almost too neat. Animals kick out the farmer, promise a better world, and end up under a new set of tyrants. Orwell keeps it plain, which is exactly why it works. Nothing feels dressed up. You watch the hope drain out of the farm step by step.
 
-However, as the story unfolds, we witness the gradual erosion of the animals' ideals as the pigs consolidate their power and become indistinguishable from the humans they once opposed. Through cunning manipulation and propaganda, Napoleon and his cohorts subvert the principles of Animalism, betraying the very creatures they claim to represent.
+That slow slide is the whole book. Nobody wakes up one morning and says the revolution is dead. The rules change a little. The language gets slippery. The animals get tired. They start doubting what they saw with their own eyes. By the time the truth is fully broken, they do not have much left to fight with.
 
-Orwell masterfully uses animal characters to represent different aspects of human nature and political ideologies. The pigs, with their intelligence and ability to organize, symbolize the ruling elite, while the other animals represent various segments of society, from the loyal but naive working class to the cynical skeptics who question authority.
+Boxer got to me more than anyone else. He is loyal, decent, hardworking, and completely unequipped for the kind of lies being used against him. Napoleon is awful in a colder way. He does not need charm. He just needs control, patience, and the right people to repeat his version of events.
 
-One of the most chilling aspects of "Animal Farm" is its portrayal of how power can corrupt even the noblest of intentions. As Napoleon consolidates his control, he employs fear, manipulation, and violence to maintain his grip on power, ultimately betraying the revolutionary ideals upon which Animal Farm was founded.
+What stayed with me most is how familiar the book feels. Not because life is literally a farm run by pigs, obviously. Because Orwell understands how people get managed. Keep them busy. Keep them confused. Give them a slogan. Change the record. Do it again.
 
-Through its allegorical narrative, "Animal Farm" serves as a stark warning about the dangers of totalitarianism and the perversion of revolutionary ideals. Orwell's keen observations about human nature and politics resonate just as strongly today as they did when the novel was first published.
+It is a sharp book. Mean, too. I finished it with that bad taste you get when a story stops feeling like a story and starts feeling like a pattern you have seen before.
 
-As I close the book, I am left with a profound sense of unease and reflection. "Animal Farm" is not just a story about animals; it is a powerful allegory that holds a mirror to our society, prompting us to question the nature of power, authority, and the pursuit of utopia. It is a timeless masterpiece that reminds us of the importance of vigilance in safeguarding our freedoms and ideals.
-
----
-_If you have any comments, suggestions or remarks of any sort, you can ping me on Twitter [@aaqaishtyaq](http://www.twitter.com/aaqaishtyaq)!_
+***
+_If you have thoughts on the book, ping me on Twitter [@aaqaishtyaq](http://www.twitter.com/aaqaishtyaq)._

@@ -7,15 +7,21 @@ name: Build and deploy GH Pages
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: checkout
-        uses: actions/checkout@v3.0.0
+        uses: actions/checkout@v4
 
-      - name: set git safe dir
-        run: git config --global --add safe.directory '*'
+      - name: install nix
+        uses: DeterminateSystems/nix-installer-action@v3
 
-      - name: build_and_deploy
-        uses: shalzz/zola-deploy-action@v0.18.0
-        env:
-          PAGES_BRANCH: gh-pages
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: build site
+        run: nix run .#site-build
+
+      - name: deploy gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./public

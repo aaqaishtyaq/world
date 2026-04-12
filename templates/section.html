@@ -7,12 +7,38 @@
             <p>{{ section.description | markdown | safe }}</p>
         {% endif %}
         <div class="border"></div>
-        <ul>
+
+        <ul class="{% if section.title == "Blogs" %}blog-list{% else %}section-list{% endif %}">
         {% for p in section.pages %}
-            <li>
-                <a href="{{ p.permalink | safe}}">
-                    {{ p.title }}
-                </a>
+            <li{% if section.title == "Blogs" %} class="blog-list-item"{% else %} class="section-list-item"{% endif %}>
+                {% if section.title == "Blogs" %}
+                    {% if p.date %}
+                    <time class="listing-date listing-date-prefix" datetime="{{ p.date | date(format="%Y-%m-%d") }}">
+                        {{ p.date | date(format="%d %b %Y") }}
+                    </time>
+                    {% endif %}
+                    <a href="{{ p.permalink | safe}}" class="blog-list-title">
+                        {{ p.title }}
+                    </a>
+                    {% if p.taxonomies is defined and p.taxonomies.series %}
+                    <span class="entry-meta">
+                        {% for item in p.taxonomies.series %}
+                            <a href="{{ get_taxonomy_url(kind="series", name=item) | safe }}" class="series-pill">
+                                {{ item }}
+                            </a>
+                        {% endfor %}
+                    </span>
+                    {% endif %}
+                {% else %}
+                    <a href="{{ p.permalink | safe}}">
+                        {{ p.title }}
+                    </a>
+                    {% if p.date %}
+                    <time class="listing-date section-list-date" datetime="{{ p.date | date(format="%Y-%m-%d") }}">
+                        {{ p.date | date(format="%d %b %Y") }}
+                    </time>
+                    {% endif %}
+                {% endif %}
             </li>
         {% endfor %}
         </ul>
@@ -22,7 +48,7 @@
                 <h1>{{ section.title }}</h1>
                 <div class="border"></div>
             </div>
-            <div itemprop="articleBody">
+            <div itemprop="articleBody" class="article-body">
                 {{ section.content | safe }}
             </div>
         </article>

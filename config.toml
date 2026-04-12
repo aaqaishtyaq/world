@@ -3,21 +3,23 @@ title = "Aaqa Ishtyaq"
 description = "Aaqa Ishtyaq, Ramblings on programming, tech and life."
 compile_sass = true
 build_search_index = false
-generate_feed = true
-feed_filename = "rss.xml"
+generate_feeds = true
+feed_filenames = ["rss.xml"]
 minify_html = true
 
-[markdown]
-highlight_code = true
-highlight_theme = "css"
-extra_syntaxes_and_themes = ["static/highlight_themes"]
-highlight_themes_css = [
-  { theme = "tomorrow-light", filename = "hl-light.css"},
-  { theme = "tomorrow-dark", filename = "hl-dark.css"},
+taxonomies = [
+    { name = "series", feed = false },
 ]
+
+[markdown]
 external_links_target_blank = true
 external_links_no_follow = true
 external_links_no_referrer = true
+
+[markdown.highlighting]
+style = "class"
+light_theme = "github-light"
+dark_theme = "github-dark"
 
 [extra]
 author = "Aaqa Ishtyaq"

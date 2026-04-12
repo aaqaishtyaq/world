@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block title %}{{ term.name }} | Series | {{ config.title }}{% endblock title %}
+
+{% block main %}
+<section class="series-section">
+    <h1>{{ term.name }}</h1>
+    <p class="series-count">
+        {{ term.page_count }} posts in this series.
+    </p>
+    <div class="border"></div>
+
+    <ul class="blog-list">
+        {% for page in term.pages %}
+        <li class="blog-list-item">
+            {% if page.date %}
+            <time class="listing-date listing-date-prefix" datetime="{{ page.date | date(format="%Y-%m-%d") }}">
+                {{ page.date | date(format="%d %b %Y") }}
+            </time>
+            {% endif %}
+            <a href="{{ page.permalink | safe }}" class="blog-list-title">
+                {{ page.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock main %}

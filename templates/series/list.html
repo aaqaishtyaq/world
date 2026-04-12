@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block title %}Series | {{ config.title }}{% endblock title %}
+
+{% block main %}
+<section class="series-section">
+    <h1>Series</h1>
+    <p>
+        Related blog posts grouped into longer threads.
+    </p>
+    <div class="border"></div>
+
+    <ul class="series-index">
+        {% for item in terms %}
+        <li class="home-list series-index-item">
+            <div class="series-index-head">
+                <a href="{{ item.permalink | safe }}" class="series-index-link">{{ item.name }}</a>
+                <span class="series-count">{{ item.page_count }} posts</span>
+            </div>
+        </li>
+            <ul class="series-posts">
+                {% for page in item.pages %}
+                <li class="home-list">
+                    <div class="listing-line">
+                        <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+                        {% if page.date %}
+                        <time class="listing-date" datetime="{{ page.date | date(format="%Y-%m-%d") }}">
+                            {{ page.date | date(format="%d %b %Y") }}
+                        </time>
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock main %}

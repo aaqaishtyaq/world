@@ -1,9 +1,13 @@
 # macOS
 *~
 .DS_Store
+.direnv/
 
 # Zola
 public/
 static/processed_images
 static/hl-dark.css
 static/hl-light.css
+
+# Rust
+tools/reading-stats/target/

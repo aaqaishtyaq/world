@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 
 {% block main %}
+{% set reading_stats = load_data(path="data/reading_stats.json", required=false) %}
 <article itemscope itemtype="http://schema.org/BlogPosting">
     <div itemprop="headline">
         <h1>{{ page.title }}</h1>
@@ -10,14 +11,55 @@
                 {{ page.date | date(format="%d %b %Y") }}
             </time>
             <div class="reading-time">
-                {% set word_count = page.content | split(pat=" ") | length %}
-                {% set reading_time = (word_count / 200) | round %}
-                <div>{{ word_count }} words, {{ reading_time }} minutes to read</div>
+                {# Prefer weighted stats from the markdown source so code and ASCII diagrams
+                   do not get priced like prose. Fall back to Zola's built-ins if the
+                   generated data file is missing. #}
+                {% if reading_stats and reading_stats[page.relative_path] is defined %}
+                {% set reading = reading_stats[page.relative_path] %}
+                <div>{{ reading.word_count }} words, {{ reading.reading_time_minutes }} minutes to read</div>
+                {% else %}
+                <div>{{ page.word_count }} words, {{ page.reading_time }} minutes to read</div>
+                {% endif %}
             </div>
         </div>
     </div>
-    <div itemprop="articleBody">
+    <div itemprop="articleBody" class="article-body">
         {{ page.content | safe }}
     </div>
+
+    {% if page.taxonomies is defined and page.taxonomies.series %}
+    {% set all_series = get_taxonomy(kind="series", required=false) %}
+    {% if all_series and all_series.items %}
+        {% for series_name in page.taxonomies.series %}
+            {% for term in all_series.items %}
+                {% if term.name == series_name %}
+                <section class="series-footer">
+                    <div class="border"></div>
+                    <p class="series-footer-label">More from {{ term.name }}</p>
+                    <ul class="section-list">
+                        {% for related_page in term.pages %}
+                            {% if related_page.permalink != page.permalink and loop.index <= 4 %}
+                            <li class="section-list-item">
+                                {% if related_page.date %}
+                                <time class="listing-date section-list-date" datetime="{{ related_page.date | date(format="%Y-%m-%d") }}">
+                                    {{ related_page.date | date(format="%d %b %Y") }}
+                                </time>
+                                {% endif %}
+                                <a href="{{ related_page.permalink | safe }}">
+                                    {{ related_page.title }}
+                                </a>
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <p class="series-footer-link">
+                        <a href="{{ term.permalink | safe }}">See the full series</a>
+                    </p>
+                </section>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+    {% endif %}
 </article>
 {% endblock main %}
