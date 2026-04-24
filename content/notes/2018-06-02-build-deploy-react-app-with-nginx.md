@@ -1,18 +1,18 @@
 +++
-title = "Deploy a React app with sass using Nginx"
+title = "Build and Deploy a React App with Sass and Nginx"
 date = "2018-06-02"
 +++
 
 A couple of days ago (at the time of writing), I started my newest side
 project. It's a portfolio showcasing my (very very very) amateur
 photography. It's written in React.js with Sass and I have to say it was
-extremely enjoyable to work on. Unsurprisingly though, I ran into some issues while
-deploying to production, which after a lot of head banging against every
-possible flat surface I could find, I managed to sort. So this post will be about
-how to make React.js work with sass in production and how to serve the project
-using Nginx as a front end web server.
+extremely enjoyable to work on. Unsurprisingly though, I ran into some issues
+while deploying to production which, after a lot of head banging against every
+possible flat surface I could find, I managed to sort out. So this post will be
+about how to make React.js work with Sass in production and how to serve the
+project using Nginx as a front-end web server.
 
-We'll be using the official starter kit / CLI tool provided by the facebook
+We'll be using the official starter kit / CLI tool provided by the Facebook
 team called `create-react-app`.
 
 You can install it by running the following command:
@@ -23,7 +23,7 @@ npm install -g create-react-app
 
 ## Adding Sass to a React project
 
-Including sass in a React app can be done in two ways: You can either eject the
+Including Sass in a React app can be done in two ways: You can either eject the
 project and manually modify the webpack config files or you can follow the
 procedure in the [official docs][1]. I've personally chosen to go with the first approach.
 You can just follow the steps in this [tutorial][2] to get up and running.

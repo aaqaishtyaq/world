@@ -1,12 +1,11 @@
 +++
-title = "Basic file operations in Python"
+title = "Useful File Operations in Python"
 date = "2018-03-28"
 +++
 
-In this short (spoiler: it's actually quite lengthy) post, I will be going
-through a list of very useful and handy methods in the `os` module
-(which is part of the Python standard library) for handling files and
-directories.
+In this short post (spoiler: it's actually quite lengthy), I'm going to walk
+through a list of useful methods in the `os` module (which is part of the
+Python standard library) for handling files and directories.
 
 ## 1. Create a directory
 
@@ -22,15 +21,15 @@ import os
 os.mkdir("my_awesome_directory")
 ```
 
-The method takes a string its argument and will create the directory under the
+The method takes a string as its argument and will create the directory under the
 file's parent folder. (For instance, if the path to the file calling os.mkdir()
 is /home/username/Documents/app.py, the "my\_awesome\_directory" will be created
 under /home/username/Documents)
 
 ## 2. Get a file's parent directory.
 
-This is useful if you want to get the path to a file/folder that you know is
-under the working file's parent directory. If this was confusing, here's an
+This is useful if you want the path to a file or folder that you know lives
+under the working file's parent directory. If that sounded confusing, here's an
 example.
 
 In the Linux shell (bash or otherwise), you can issue the command `pwd`

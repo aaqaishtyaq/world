@@ -1,5 +1,5 @@
 +++
-title = "The ultimate setup for remote development"
+title = "The Ultimate Remote Development Setup"
 date = "2018-05-08"
 +++
 
@@ -7,7 +7,8 @@ I'm a programmer. Like most programmers, I use an Apple laptop. They're just the
 best on the market and the best purchase you can make as a developer. No
 fanboyism here, just stating facts. They're fast, well built, and durable.
 
-I rely on this laptop for all my personal / client work. I run vagrant boxes, docker containers in it and all the usual stuff.
+I rely on this laptop for all my personal / client work. I run Vagrant boxes,
+Docker containers on it and all the usual stuff.
 
 As a result, I've developed this irrational fear that it would get stolen or
 fall off my bedroom window (things like that happen, trust me). Interestingly
@@ -37,7 +38,7 @@ Because all of your work is now done on a remote machine you don't really have
 to care about what computer you're using. It can be a super expensive (notice I
 didn't say overpriced) Apple laptop or any of its really good windows competitors (the DELL xps 13/15 comes to mind) or even a super cheap, 35$ raspberry Pi. Some people even use chromebooks ! They stick ubuntu on them and use them as their primary machines (SSH is a bit tricky to setup on chrome OS) but hey! Official [Linux support](https://www.xda-developers.com/chromebooks-linux-app-support/) is coming for you ChromeOS folks.
 
-## Dev Tools ##
+## Dev Tools
 
 ### Git
 
@@ -47,7 +48,7 @@ This one's obvious. While git is a life saver and a great tool for collaboration
 
 I've used sublime text but felt bad for continuously extending the trial because I
 couldn't pay for it. Then I switched back to VSCode and got frustrated by how slow it
-runs after using Sublime. Then i tried vim, and I never
+runs after using Sublime. Then I tried vim, and I never
 looked back. It's the lightest, fastest and overall best text editor out there by a huge
 margin (in my opinion).
 

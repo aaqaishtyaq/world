@@ -1,13 +1,13 @@
 +++
-title = "Algorithms in Python: Bubble Sort"
+title = "Algorithms in Python: Understanding Bubble Sort"
 date = "2018-01-08"
 +++
 
 ## Some theory
 
-Bubble sort is another commonly known sorting algorithm. The idea here is to
-scan a list of items (say integers) sequentially (from left to right) and
-compare consecutive pairs of elements starting at index 0.
+Bubble sort is one of the most commonly known sorting algorithms. The idea is
+simple: scan a list of items (say integers) sequentially, from left to right,
+and compare consecutive pairs of elements starting at index 0.
 
 Example:
 ```python
@@ -16,12 +16,12 @@ my_numbers = [92,11,45,2234,0,7,65]
 # 92 is index 0 and the consecutive pairs are
 # (92,11), (11,45), (45,2234) and so on ...
 ```
-At first we compare elements (list[0],list[1]) then (list[1],list[2]) then
-(list[2],list[3]) and so on until the end of the list is reached.
+First we compare elements (list[0],list[1]) then (list[1],list[2]) then
+(list[2],list[3]) and so on until we reach the end of the list.
 
-When comparing we check if element i is greater than element i + 1, if they are
-we just swap the two elements and move on to the next pair. If they are not this
-means that the pair is already sorted, so we also move on to the next pair.
+When comparing, we check if element i is greater than element i + 1. If it is,
+we swap the two elements and move on to the next pair. If not, it means the
+pair is already sorted, so we still move on to the next pair.
 
 Example:
 ```python
@@ -61,7 +61,7 @@ Notice how after each pass the highest value number is pushed at len(list) - 1.
 
 ## Some code
 
-Let's look at how to implement Bubble Sort using Python:
+Let's look at how to implement Bubble Sort in Python:
 
 ```python
 def bubble_sort(some_list):
@@ -79,7 +79,7 @@ def bubble_sort(some_list):
                 some_list[i], some_list[i+1] = some_list[i+1], some_list[i]
                 is_sorted = False
 ```
-This works right and it will sort any list you throw at it. However we can
+This works fine and it will sort any list you throw at it. However we can
 slightly optimise it: We know that, after each pass the highest value element is
 guaranteed to be sorted and placed at len(some\_list) - 1. Because of this, for
 each subsequent pass, we can stop comparing the last sorted item. instead of

@@ -1,20 +1,21 @@
 +++
-title = "The ultimate PostgreSQL cheatsheet"
+title = "The Ultimate PostgreSQL Cheat Sheet"
 date = "2018-05-09"
 +++
 
-So I had been working with Django, Flask and Express.js for a while now, and my
-database of choice for every single project has of course always been Postgres.
+So I'd been working with Django, Flask, and Express.js for a while, and my
+database of choice for pretty much every project had, of course, always been
+Postgres.
 What makes these frameworks great (regardless of language) is the ability to use
 an ORM (Object Relational Mapper) that sits between your code and the DB.
 It does all the heavy lifting for you and takes care of executing SQL queries on
 your behalf.
 
-This is great but I couldn't stop thinking "what if I have to
-manually debug something directly into postgres ?" This is when reality slapped
-me in the face, I barely knew the SQL Language. So I thought It'd be fun to
-create a cheatsheet that I (and you) could keep as a reference for these times
-when you absolutely need to set this column to UNIQUE and you don't know how.
+This is great, but I couldn't stop thinking, "what if I have to manually debug
+something directly in Postgres?" That was when reality slapped me in the face:
+I barely knew SQL. So I thought it'd be fun to create a cheat sheet that both I
+and you could keep around for those times when you absolutely need to set a
+column to `UNIQUE` and you don't know how.
 
 Enjoy ! (and yeah I went all in with the pokemon references)
 

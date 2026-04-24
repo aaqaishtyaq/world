@@ -1,12 +1,15 @@
 +++
-title = "Mind-blowing Python tips"
+title = "Mind-Blowing Python Tips and Tricks"
 date = "2018-02-15"
 +++
 
+A short list of Python tricks that make day-to-day code a little nicer.
+Nothing too magical, just handy stuff.
+
 ## 0 - Loop over a range of numbers
 Use `range` instead of `xrange`.
-In python3, the former creates an iterator that produces the values one at
-a time making it much more efficient and fast.
+In Python 3, the former creates an iterator-like object that produces values
+one at a time, which makes it much more efficient.
 
 ```python
 
@@ -17,7 +20,7 @@ for i in range(nums):
 ```
 
 ## 1 - Looping backwards
-.reversed use Just
+Just use `reversed`.
 
 ```python
 
@@ -39,7 +42,7 @@ for index, name in enumerate(names):
 ```
 
 ## 3 - Looping over two lists simultaneously
-Yeah you could use zip, but izip is faster, so use that instead.
+Yeah, you could use `zip`, but `izip` is faster, so use that instead.
 
 ```python
 

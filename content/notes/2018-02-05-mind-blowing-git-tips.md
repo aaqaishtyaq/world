@@ -1,11 +1,16 @@
 +++
-title = "Mind-blowing git tips for beginners"
+title = "Mind-Blowing Git Tips for Beginners"
 date = "2018-02-05"
 +++
 
-As developers, we all (hopefully) use git. It's not extremely hard nor time-consuming to get started with it and you will surely thank your future self for taking the time to learn it. Ok so that was for the cringy intro.
+As developers, we all (hopefully) use git. It's not extremely hard or
+time-consuming to get started with it, and you'll surely thank your future self
+for taking the time to learn it. Ok, that was the cringy intro.
 
-Now let's get down to business: what I really want to share in this post is a list of tricks I've learned during the past 2 1/2 years of using git. Some of it might seem trivial to seasoned developers but if you're just getting started, stick with me because this might just blow your mind.
+Now let's get down to business: what I really want to share in this post is a
+list of tricks I've learned during the past 2 1/2 years of using git. Some of
+it might seem trivial to seasoned developers, but if you're just getting
+started, stick with me because a couple of these might just blow your mind.
 
 ## The difference between git fetch and pull
 
@@ -16,17 +21,17 @@ tracking branch using `git merge`.
 **remote branches are prefixed with the name of the remote and a slash:
 origin/branchname**
 
-git pull on the other hand, will execute both commands for you so when you issue
+`git pull`, on the other hand, will execute both commands for you so when you issue
 a `git pull` in a branch it will fetch that branch from the remote repo **and**
 merge it with yours.
 
-To list all remote trackin branches, `git branch -r` is your friend.
+To list all remote tracking branches, `git branch -r` is your friend.
 
 ## Merge conflicts
 
 At some point you'll inevitably have to deal with merge conflicts. Essentially what this means is that git noticed a file was modified on both branches and it does not know which version is correct. It leaves it up to you to decide which one you want to push.
 
-if you open the file you will see a `HEAD` part prefixed with `<<<<` signs and a
+If you open the file you will see a `HEAD` part prefixed with `<<<<` signs and a
     second part containing the code on the branch you're trying to merge. Both
     sections are separated with an equal sign.
 
@@ -41,7 +46,7 @@ see if you don't have any remaining conflicts. If not you can just push your cod
 As for the tips:
 
 `git merge --abort` will clean up the current working directory and go back to
-the last version before the merge (it pretty much nullfies the merge).
+the last version before the merge (it pretty much nullifies the merge).
 
 `git merge --squash` is an interesting one as it will bring the changes you made in the feature branch and create a new commit on your current branch without
 mixing the two histories.
@@ -113,4 +118,3 @@ which will pick up the changes and automatically stage them for commit.
 
 So there you go, I hope you learned something useful in this article. If you know
 other mind-blowing tips and tricks for git, [@ me on twitter](https://twitter.com/aaqaishtyaq).
-

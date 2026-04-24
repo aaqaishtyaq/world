@@ -1,19 +1,25 @@
 +++
-title = "Setting up Scrapy Splash Plugin"
+title = "How to Set Up the Scrapy Splash Plugin"
 date = "2018-09-01"
 +++
 
-Scrapy is good for scraping static web pages using python but when it comes to dynamic web pages scrapy can't do wonders, and there comes ```Selenium``` but as good as selenium is, it just got beaten by Scrapy in terms or speed.
+Scrapy is great for scraping static web pages with Python, but when it comes to
+dynamic pages it can only do so much. That's where ```Selenium``` usually comes
+in, but as good as Selenium is, Scrapy still beats it in terms of speed.
 
-Web nowdays is all about Dynamic JS based pages and AJAX. So for this very scenario the guys over [scrapy-plugins][0] created ```scrapy-splash```.
-Scrapy-Splash is a plugin that connects Scrapy with Splash (Lightweight, scriptable browser as a service with an HTTP API).
-In a nutshell what splash do is it traps the response recieved from the server and renders it. Then it return a ```render.html``` which is static and can be easily scraped.
+The web these days is full of dynamic JS-based pages and AJAX. For exactly that
+scenario, the folks over at [scrapy-plugins][0] created ```scrapy-splash```.
+Scrapy-Splash is a plugin that connects Scrapy with Splash (a lightweight,
+scriptable browser as a service with an HTTP API). In a nutshell, Splash takes
+the response received from the server and renders it. Then it returns a
+```render.html``` response which is static and can be scraped easily.
 
 ## 0 - Setting up the machine
 
 A. Before we begin you need to install ```Docker``` first, You can follow the [official instruction][1] as per your Operating System.
 
-B. After installing docker navigate to your project folder, activate ```virtualenv``` and install scrapy-splsh plugin
+B. After installing Docker, navigate to your project folder, activate
+```virtualenv``` and install the scrapy-splash plugin
 
 ```bash
 pip3 install scrapy-splash

@@ -1,19 +1,19 @@
 +++
-title = "The Recipe of a great RESTful API"
+title = "The Recipe for a Great RESTful API"
 date = "2018-12-30"
 +++
 
-I personally love writing APIs, it's my favourite thing about backend
-development. As developers we interact with APIs all the time, to
-process payments with stripe, for geolocation with google maps, to retrieve
-tweets etc ...
+I personally love writing APIs. It's my favourite thing about backend
+development. As developers, we interact with APIs all the time: to process
+payments with Stripe, handle geolocation with Google Maps, retrieve tweets,
+etc.
 
-So what exactly makes a RESTful API great ? What can you do to
-ensure that it's easy to use for other developers ? Let's dive right in.
+So what exactly makes a RESTful API great? What can you do to ensure that it's
+easy for other developers to use? Let's dive right in.
 
 ## Responses
 
-In your responses, you should separate the metadata from the the body and put them in their own objects.
+In your responses, you should separate the metadata from the body and put them in their own objects.
 
 ```javascript
 // Example: GET /api/user/2

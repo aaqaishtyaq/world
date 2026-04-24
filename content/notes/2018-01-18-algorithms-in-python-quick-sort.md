@@ -1,16 +1,16 @@
 +++
-title = "Algorithms in Python: Quick Sort"
+title = "Algorithms in Python: Understanding Quick Sort"
 date = "2018-01-08"
 +++
 
 ## Theory
 
-Quicksort is a "divide and conquer" type of algorithm. The good thing about
-it is that the worst case can almost always be avoided by using what is called a
+Quicksort is a "divide and conquer" type of algorithm. One good thing about
+it is that the worst case can almost always be avoided by using what's called a
 randomized version of quicksort (more on that later).
 
-The idea of Quicksort is to take an unsorted list and select an element (on that
-list) called a "pivot". Then the list is rearranged such that all elements greater
+The idea of Quicksort is to take an unsorted list and select one element from
+it called a "pivot". Then the list is rearranged such that all elements greater
 (in value) than the pivot are placed to its right, and all elements lesser (in
 value) are placed to its left.
 

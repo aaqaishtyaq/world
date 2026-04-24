@@ -1,20 +1,20 @@
 +++
-title = "Don't be scared. Switch to vim."
+title = "Don't Be Scared, Switch to Vim"
 date = "2018-02-03"
 +++
 
 I'm currently sitting at the most boring meetup I've probably ever attended in
 Delhi. It's about chatbots. I don't care about chatbots, I care about free
-stickers and pizza. So I'll take this opportunity to open up about a subject
+stickers and pizza. So I'm using this opportunity to open up about a subject
 that's dear to my heart: vim.
 
 I used to believe vim was exclusive to this superior race of developers who
 gulp coffee like it's water and seem to only read HN and nothing else. (Hi, if
-you're coming from HN). Architecture and Software design comes naturally to them,
+you're coming from HN). Architecture and software design come naturally to them,
 they never run into bugs and they can recognize the most obscure of algorithms
 at a glance (Shout out to Shashank, one of my mentors).
 
-Shanky is a good, productive developer. Shany uses vim. I want to be like Shanky. I want
+Shanky is a good, productive developer. Shanky uses vim. I want to be like Shanky. I want
 to use vim.
 
 There are a million reasons why you should jump ship and join the cult. In the
@@ -22,7 +22,7 @@ next paragraphs, I will detail some of these reasons.
 
 ## It's not (that) hard
 
-There's a learning curve to vim. But it's worth the
+There's a learning curve to vim, but it's worth the
 trouble. And if you're on Linux or MacOS, there's a built-in tool called
 `vimtutor` (just fire it up from a terminal, I am not sure about Windows though) and
 a wide variety of online tools to learn vim. Namely [openvim][0],
@@ -89,5 +89,4 @@ I'll end this article with a quote from a Chamillionaire:
 [9]: https://github.com/junegunn/goyo.vim
 [10]: https://github.com/danilo-augusto/vim-afterglow
 [11]: http://vimcolors.com/
-
 

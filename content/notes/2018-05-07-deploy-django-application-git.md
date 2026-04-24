@@ -1,20 +1,20 @@
 +++
-title = "Deploy your Django application with git"
+title = "Deploy a Django App with Git"
 date = "2018-05-07"
 +++
 
 I'm going to make a bold statement: Django replaced Ruby on Rails in the hearts
-of many developers. With this increase in popularity, we've seen tons or
-articles, videos and websites dedicated to setting un Django and creating apps
-using the framework.
+of many developers. With this increase in popularity, we've seen tons of
+articles, videos, and websites dedicated to setting up Django and creating apps
+with the framework.
 
 Unfortunately, when it comes to deployment, many of these resources only mention
 heroku or pythonanywhere. While these are excellent solutions for quickly
-shipping your MVP or prototype, it lacks a bit in terms of flexibility if you
+shipping your MVP or prototype, they lack a bit of flexibility if you
 want to create your custom deployment pipeline.
 
-**tl-dr: If you manage your own server infrastructure, we're going to setup a git
-deployment workflow with django**
+**tl;dr: If you manage your own server infrastructure, we're going to set up a
+Git deployment workflow with Django.**
 
 ## What you'll need
 
