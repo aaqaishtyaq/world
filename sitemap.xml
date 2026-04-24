@@ -26,12 +26,24 @@
         <lastmod>2018-06-02</lastmod>
     </url>
     <url>
+        <loc>https://aaqa.dev/notes/building-a-microvm-control-plane/</loc>
+        <lastmod>2026-04-01</lastmod>
+    </url>
+    <url>
+        <loc>https://aaqa.dev/notes/crash-resistant-machine-fsms/</loc>
+        <lastmod>2026-04-02</lastmod>
+    </url>
+    <url>
         <loc>https://aaqa.dev/notes/deploy-django-application-git/</loc>
         <lastmod>2018-05-07</lastmod>
     </url>
     <url>
         <loc>https://aaqa.dev/notes/dont-be-scared-switch-to-vim/</loc>
         <lastmod>2018-02-03</lastmod>
+    </url>
+    <url>
+        <loc>https://aaqa.dev/notes/fast-starts-snapshots-clones-and-warm-slots/</loc>
+        <lastmod>2026-04-05</lastmod>
     </url>
     <url>
         <loc>https://aaqa.dev/notes/firecracker-dev-machine-setup/</loc>
@@ -42,12 +54,24 @@
         <lastmod>2022-07-29</lastmod>
     </url>
     <url>
+        <loc>https://aaqa.dev/notes/host-reconciliation-with-a-host-agent/</loc>
+        <lastmod>2026-04-09</lastmod>
+    </url>
+    <url>
+        <loc>https://aaqa.dev/notes/how-a-worker-node-runs-a-microvm/</loc>
+        <lastmod>2026-04-03</lastmod>
+    </url>
+    <url>
         <loc>https://aaqa.dev/notes/hugo-open-markdown-new-tab/</loc>
         <lastmod>2020-06-05</lastmod>
     </url>
     <url>
         <loc>https://aaqa.dev/notes/linux-container-networking/</loc>
         <lastmod>2023-01-26</lastmod>
+    </url>
+    <url>
+        <loc>https://aaqa.dev/notes/making-internal-dns-boring/</loc>
+        <lastmod>2026-04-07</lastmod>
     </url>
     <url>
         <loc>https://aaqa.dev/notes/mind-blowing-git-tips/</loc>
@@ -58,12 +82,32 @@
         <lastmod>2018-02-15</lastmod>
     </url>
     <url>
+        <loc>https://aaqa.dev/notes/move-git-untracked-files-to-temp-dir/</loc>
+        <lastmod>2024-03-19</lastmod>
+    </url>
+    <url>
+        <loc>https://aaqa.dev/notes/observability-for-a-microvm-platform/</loc>
+        <lastmod>2026-04-10</lastmod>
+    </url>
+    <url>
+        <loc>https://aaqa.dev/notes/private-networking-for-microvms-wireguard-ipv6/</loc>
+        <lastmod>2026-04-06</lastmod>
+    </url>
+    <url>
         <loc>https://aaqa.dev/notes/recipe-of-great-rest-api/</loc>
         <lastmod>2018-12-30</lastmod>
     </url>
     <url>
+        <loc>https://aaqa.dev/notes/scheduling-dense-compute-without-lying-to-yourself/</loc>
+        <lastmod>2026-04-11</lastmod>
+    </url>
+    <url>
         <loc>https://aaqa.dev/notes/scrapy-splash-setup/</loc>
         <lastmod>2018-09-01</lastmod>
+    </url>
+    <url>
+        <loc>https://aaqa.dev/notes/stateless-regional-control-plane-with-gossip-state/</loc>
+        <lastmod>2026-04-04</lastmod>
     </url>
     <url>
         <loc>https://aaqa.dev/notes/the-ultimate-postgresql-cheatsheet/</loc>
@@ -72,6 +116,14 @@
     <url>
         <loc>https://aaqa.dev/notes/the-ultimate-setup-for-remote-development/</loc>
         <lastmod>2018-05-08</lastmod>
+    </url>
+    <url>
+        <loc>https://aaqa.dev/notes/what-ai-infrastructure-needs-from-microvms/</loc>
+        <lastmod>2026-04-12</lastmod>
+    </url>
+    <url>
+        <loc>https://aaqa.dev/notes/why-we-built-our-own-machine-proxy/</loc>
+        <lastmod>2026-04-08</lastmod>
     </url>
     <url>
         <loc>https://aaqa.dev/reading/</loc>
@@ -89,11 +141,10 @@
         <lastmod>2024-01-01</lastmod>
     </url>
     <url>
-        <loc>https://aaqa.dev/tils/</loc>
+        <loc>https://aaqa.dev/series/</loc>
     </url>
     <url>
-        <loc>https://aaqa.dev/tils/move-git-untracked-files-to-temp-dir/</loc>
-        <lastmod>2024-03-19</lastmod>
+        <loc>https://aaqa.dev/series/microvm-platform/</loc>
     </url>
     <url>
         <loc>https://aaqa.dev/travel/</loc>
