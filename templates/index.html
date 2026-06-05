@@ -83,17 +83,22 @@
                 <div class="head-row head-text">
                     <p class="head-intro head-intro-primary">
                         My name is Aaqa Ishtyaq. I am a polyglot software engineer with an interest in distributed
-                        systems and observability.
+                        systems, ML infrastructure, and inference engineering.
                     </p>
                     <p class="head-intro head-intro-secondary">
                         I have been writing code professionally for {{ now() | date(format="%Y") | int - 2019 }} years and, as a hobby, since I was 12. I like
                         to read books, take photos, and hike in the mountains near my place.
                     </p>
                     <p class="head-intro head-intro-secondary">
-                        I am a backend engineer working remotely from India on the infrastructure engineering team at
-                        <a href="https://deel.com" target="_blank" class="deel-work">Deel</a>. Previously, I was a
-                        senior software engineer at <a href="https://hackerrank.com" target="_blank" class="hackerrank-work">HackerRank</a>,
-                        focusing on their core remote code execution system.
+                        I am an infrastructure engineer at <a href="https://deel.com" target="_blank" class="deel-work">Deel</a>,
+                        working remotely from India on distributed systems at scale. Previously, I was a senior software
+                        engineer at <a href="https://hackerrank.com" target="_blank" class="hackerrank-work">HackerRank</a>,
+                        building their core remote code execution system.
+                    </p>
+                    <p class="head-intro head-intro-secondary">
+                        I am currently deep in ML infrastructure — building for inference engineering, fine-tuning, and
+                        training infrastructure. I am working on depot, a distributed Firecracker microVM orchestration
+                        platform, and arin, an AI-powered workflow automation system with multi-model LLM routing.
                     </p>
                     <p class="head-intro head-intro-secondary">
                         The theme of my blog is software engineering, but I tend to derive broader life lessons from
@@ -237,11 +242,12 @@
             <div class="border"></div>
             <div class="footer">
                 <small class="footer-left">
-                    Copyright &copy; {{ config.extra.author }}
+                    Copyright &copy; 2015&ndash;{{ now() | date(format="%Y") }} {{ config.extra.author }}
                 </small>
                 <small class="footer-right">
                     Links: <a href="https://github.com/aaqaishtyaq" target="_blank">Github</a> | <a
-                        href="https://linkedin.com/in/aaqaishtyaq" target="_blank">LinkedIn</a>
+                        href="https://linkedin.com/in/aaqaishtyaq" target="_blank">LinkedIn</a> | <a
+                        href="https://x.com/aaqaishtyaq" target="_blank">X</a>
                 </small>
             </div>
             <br />

@@ -1,15 +1,15 @@
 {
   "notes/2018-01-08-algorithms-in-python-bubble-sort.md": {
-    "word_count": 487,
+    "word_count": 484,
     "reading_time_minutes": 4,
-    "prose_words": 487,
+    "prose_words": 484,
     "code_lines": 45,
     "diagram_lines": 0
   },
   "notes/2018-01-18-algorithms-in-python-quick-sort.md": {
-    "word_count": 450,
+    "word_count": 449,
     "reading_time_minutes": 3,
-    "prose_words": 450,
+    "prose_words": 449,
     "code_lines": 25,
     "diagram_lines": 0
   },
@@ -21,30 +21,30 @@
     "diagram_lines": 0
   },
   "notes/2018-02-05-mind-blowing-git-tips.md": {
-    "word_count": 825,
+    "word_count": 826,
     "reading_time_minutes": 4,
-    "prose_words": 825,
+    "prose_words": 826,
     "code_lines": 6,
     "diagram_lines": 0
   },
   "notes/2018-02-15-mind-blowing-python-tips.md": {
-    "word_count": 312,
+    "word_count": 334,
     "reading_time_minutes": 3,
-    "prose_words": 312,
+    "prose_words": 334,
     "code_lines": 50,
     "diagram_lines": 0
   },
   "notes/2018-03-28-basic-file-operations-in-python.md": {
-    "word_count": 692,
+    "word_count": 690,
     "reading_time_minutes": 4,
-    "prose_words": 692,
+    "prose_words": 690,
     "code_lines": 31,
     "diagram_lines": 0
   },
   "notes/2018-05-07-deploy-django-application-git.md": {
-    "word_count": 859,
+    "word_count": 858,
     "reading_time_minutes": 6,
-    "prose_words": 859,
+    "prose_words": 858,
     "code_lines": 58,
     "diagram_lines": 0
   },
@@ -56,30 +56,30 @@
     "diagram_lines": 0
   },
   "notes/2018-05-09-the-ultimate-postgresql-cheatsheet.md": {
-    "word_count": 545,
+    "word_count": 543,
     "reading_time_minutes": 8,
-    "prose_words": 545,
+    "prose_words": 543,
     "code_lines": 214,
     "diagram_lines": 0
   },
   "notes/2018-06-02-build-deploy-react-app-with-nginx.md": {
-    "word_count": 1356,
+    "word_count": 1357,
     "reading_time_minutes": 7,
-    "prose_words": 1356,
+    "prose_words": 1357,
     "code_lines": 46,
     "diagram_lines": 0
   },
   "notes/2018-09-01-scrapy-splash-setup.md": {
-    "word_count": 453,
+    "word_count": 455,
     "reading_time_minutes": 3,
-    "prose_words": 453,
+    "prose_words": 455,
     "code_lines": 18,
     "diagram_lines": 0
   },
   "notes/2018-12-30-recipe-of-great-rest-api.md": {
-    "word_count": 698,
+    "word_count": 696,
     "reading_time_minutes": 5,
-    "prose_words": 698,
+    "prose_words": 696,
     "code_lines": 50,
     "diagram_lines": 0
   },
