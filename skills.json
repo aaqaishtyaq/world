@@ -2,47 +2,48 @@
   "languages": [
     "Go",
     "Rust",
-    "Ruby",
-    "Typescript",
     "Python",
+    "CUDA",
+    "Ruby",
+    "TypeScript",
     "Bash",
-    "HTML5",
-    "CSS3",
-    "Sass",
-    "SQL",
-    "Markdown"
+    "SQL"
   ],
   "tools": [
-    "Vim / VS Code",
-    "Tmux",
-    "Z Shell",
+    "vLLM",
+    "Triton Inference Server",
+    "TensorRT",
+    "ONNX Runtime",
+    "Weights & Biases",
+    "Ray",
     "Firecracker",
     "Buildkit",
     "Containerd",
     "Docker",
-    "Virtualbox",
-    "Vagrant",
-    "Ansible",
-    "Gulp"
+    "Vim / VS Code"
   ],
   "frameworks": [
+    "PyTorch",
+    "Hugging Face Transformers",
+    "DeepSpeed",
+    "Flash Attention",
     "OpenTelemetry",
     "Ruby on Rails",
-    "Scrapy",
     "Django",
-    "Flask",
-    "Node.js",
     "React.js",
-    "Mocha / Chai"
+    "Node.js"
   ],
   "other": [
-    "Message Brokers",
+    "GPU Cluster Orchestration",
+    "Distributed Training",
+    "Model Serving & Inference",
+    "Fine-tuning (LoRA / QLoRA)",
+    "Model Quantization",
+    "NCCL / RDMA Networking",
     "Kubernetes",
     "Nomad",
-    "Basic UNIX Admin",
     "PostgreSQL",
-    "DyanamoDB",
-    "gRPC / REST ",
+    "gRPC / REST",
     "AWS / GCP / OCI"
   ]
 }

@@ -3,7 +3,7 @@
     <channel>
       <title>Aaqa Ishtyaq</title>
       <link>https://aaqa.dev/</link>
-      <description>Aaqa Ishtyaq, Ramblings on programming, tech and life.</description>
+      <description>Aaqa Ishtyaq — Infrastructure engineer exploring ML systems, inference engineering, and distributed computing.</description>
       <generator>Zola</generator>
       <language>en</language>
       <atom:link href="https://aaqa.dev/rss.xml" rel="self" type="application/rss+xml"/>
