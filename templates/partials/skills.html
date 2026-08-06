@@ -1,0 +1,14 @@
+{% import "macros/components.html" as components %}
+
+{% set skills = load_data(path="content/skills.json", format="json") %}
+{% if skills %}
+<section class="skills">
+    <h2>Skills</h2>
+    <div class="container">
+        {{ components::skill_group(title="Languages", css_class="languages", items=skills.languages) }}
+        {{ components::skill_group(title="Tools", css_class="tools", items=skills.tools) }}
+        {{ components::skill_group(title="Frameworks", css_class="frameworks", items=skills.frameworks) }}
+        {{ components::skill_group(title="Others", css_class="others", items=skills.other) }}
+    </div>
+</section>
+{% endif %}
