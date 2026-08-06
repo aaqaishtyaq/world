@@ -98,8 +98,8 @@
                     <p class="head-intro head-intro-secondary">
                         I am currently deep in ML infrastructure, building for inference engineering, fine-tuning, and
                         training infrastructure. I am building <a href="https://zei.sh" target="_blank">zei.sh</a>, a
-                        distributed Firecracker microVM sandbox platform for AI agent execution, and arin, an
-                        AI-powered workflow automation system with multi-model LLM routing.
+                        distributed microVM sandbox platform (Firecracker and Cloud Hypervisor) for AI agent
+                        execution, and an RL-based agent harness for automations and computer use.
                     </p>
                     <p class="head-intro head-intro-secondary">
                         The theme of my blog is software engineering, but I tend to derive broader life lessons from
@@ -113,6 +113,21 @@
                 </p>
             </div>
 
+            <div class="featured-project">
+                <div class="featured-project-header">
+                    <a href="https://zei.sh" target="_blank" class="featured-project-title">zei.sh</a>
+                    <span class="featured-project-badge">public beta</span>
+                </div>
+                <p class="featured-project-desc">
+                    Ephemeral microVM sandboxes (Firecracker, Cloud Hypervisor) for AI agent execution: 124ms boot,
+                    snapshot based cloning, self-healing control plane. Founder and sole engineer.
+                </p>
+                <p class="featured-project-links">
+                    <a href="https://zei.sh" target="_blank">Visit zei.sh &rarr;</a>
+                    <a href="/projects/zei-sh/">Read more</a>
+                </p>
+            </div>
+
             <p class="home-discovery-intro">
                 Here are some featured posts and pages:
             </p>
@@ -121,7 +136,7 @@
                 {% set index = get_section(path="_index.md") %}
                 {% for s in index.subsections %}
                 {% set subsection = get_section(path=s) %}
-                {% if subsection.title != 'Uses' %}
+                {% if subsection.title != 'Uses' and subsection.title != 'Projects' %}
                     <section class="home-group">
                         <h2 class="home-group-title">
                             <a href="{{ subsection.permalink | safe}}">
