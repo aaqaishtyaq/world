@@ -1,0 +1,53 @@
+{% macro post_list(pages, limit=5, more_url="") %}
+<ul class="home-post-list">
+    <!-- https://github.com/getzola/zola/issues/147 -->
+    {% for page in pages %}
+        {% if loop.index <= limit %}
+            <li class="home-post-item">
+                <div class="home-post-line">
+                    <a href="{{ page.permalink | safe }}" class="home-post-link">
+                        {{ page.title }}
+                    </a>
+                    {% if page.date %}
+                    <time class="home-post-date" datetime="{{ page.date | date(format="%Y-%m-%d") }}">
+                        {{ page.date | date(format="%d %b %Y") }}
+                    </time>
+                    {% endif %}
+                </div>
+            </li>
+        {% endif %}
+    {% endfor %}
+    {% if more_url %}
+    <li class="home-post-more">
+        <a href="{{ more_url | safe }}">See all posts</a>
+    </li>
+    {% endif %}
+</ul>
+{% endmacro post_list %}
+
+{% macro skill_group(title, css_class, items) %}
+<div class="skill-group">
+    <h3 class="{{ css_class }}">{{ title }}</h3>
+    <ul>
+        {% for item in items %}
+        <li><span> {{ item }} </span></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endmacro skill_group %}
+
+{% macro featured_project(title, url, description, badge="", read_more_url="") %}
+<div class="featured-project">
+    <div class="featured-project-header">
+        <a href="{{ url }}" target="_blank" class="featured-project-title">{{ title }}</a>
+        {% if badge %}<span class="featured-project-badge">{{ badge }}</span>{% endif %}
+    </div>
+    <p class="featured-project-desc">
+        {{ description | safe }}
+    </p>
+    <p class="featured-project-links">
+        <a href="{{ url }}" target="_blank">Visit {{ title }} &rarr;</a>
+        {% if read_more_url %}<a href="{{ read_more_url }}">Read more</a>{% endif %}
+    </p>
+</div>
+{% endmacro featured_project %}
