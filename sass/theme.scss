@@ -273,6 +273,49 @@ p > code {
         list-style-type: "";
 }
 
+.featured-project {
+    margin: 1.5em 0;
+    padding: 1em 1.2em;
+    border: 1px dashed var(--fg1);
+}
+
+.featured-project-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75em;
+    margin-bottom: 0.5em;
+}
+
+.featured-project-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--linkcolor);
+    border-bottom-color: var(--linkcolor);
+}
+
+.featured-project-badge {
+    font-size: 0.75em;
+    color: var(--fg4);
+    border: 1px solid var(--fg4);
+    padding: 0.1em 0.5em;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.featured-project-desc {
+    margin: 0 0 0.6em;
+}
+
+.featured-project-links {
+    display: flex;
+    gap: 1.2em;
+    margin: 0;
+}
+
+.featured-project-links a {
+    border-bottom: 0;
+}
+
 .home-discovery-intro {
     margin: 1.5em 0 0.9em;
     text-align: left;
