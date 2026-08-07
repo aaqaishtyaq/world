@@ -7,7 +7,24 @@
       <generator>Zola</generator>
       <language>en</language>
       <atom:link href="https://aaqa.dev/rss.xml" rel="self" type="application/rss+xml"/>
-      <lastBuildDate>Sun, 12 Apr 2026 00:00:00 +0000</lastBuildDate>
+      <lastBuildDate>Thu, 06 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>zei.sh: MicroVM Sandbox Platform</title>
+          <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://aaqa.dev/projects/zei-sh/</link>
+          <guid>https://aaqa.dev/projects/zei-sh/</guid>
+          <description xml:base="https://aaqa.dev/projects/zei-sh/">&lt;p&gt;&lt;a rel=&quot;noopener nofollow noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zei.sh&quot;&gt;zei.sh&lt;&#x2F;a&gt; is a cloud platform providing ephemeral microVM sandboxes (Firecracker and Cloud Hypervisor) for AI agent execution. Clone, branch, and snapshot environments, built for reproducible agent runs, untrusted code execution, and evals.&lt;&#x2F;p&gt;
+&lt;p&gt;Currently in public beta (v0.1), with a TypeScript SDK, an HTTP API, SSH&#x2F;WebSSH terminal access, and real-time metrics and logs dashboards.&lt;&#x2F;p&gt;
+&lt;p&gt;Highlights:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;124ms VM boot, millisecond-scale environment cloning via CRIU-based snapshots.&lt;&#x2F;li&gt;
+&lt;li&gt;Distributed control plane: regional control plane, worker node daemons, WireGuard mesh networking, TLS&#x2F;SNI ingress, and internal DNS resolution, deployed across a global edge network (3+ regions).&lt;&#x2F;li&gt;
+&lt;li&gt;Self-healing machine lifecycle via a finite state machine: machines reconcile back to desired state on crash or failure without operator intervention. Distributed state replicated across nodes via gossip-based SQLite, no etcd&#x2F;Consul dependency.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I am the founder and sole engineer.&lt;&#x2F;p&gt;
+</description>
+      </item>
       <item>
           <title>What AI Infrastructure Actually Needs from MicroVMs</title>
           <pubDate>Sun, 12 Apr 2026 00:00:00 +0000</pubDate>
