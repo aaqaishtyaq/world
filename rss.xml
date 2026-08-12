@@ -3,11 +3,21 @@
     <channel>
       <title>Aaqa Ishtyaq</title>
       <link>https://aaqa.dev/</link>
-      <description>Aaqa Ishtyaq — Infrastructure engineer exploring ML systems, inference engineering, and distributed computing.</description>
+      <description>Aaqa Ishtyaq, infrastructure engineer exploring ML systems, inference engineering, and distributed computing.</description>
       <generator>Zola</generator>
       <language>en</language>
       <atom:link href="https://aaqa.dev/rss.xml" rel="self" type="application/rss+xml"/>
-      <lastBuildDate>Thu, 06 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <lastBuildDate>Wed, 12 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>dvito.cloud: AI Lab</title>
+          <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://aaqa.dev/projects/dvito-cloud/</link>
+          <guid>https://aaqa.dev/projects/dvito-cloud/</guid>
+          <description xml:base="https://aaqa.dev/projects/dvito-cloud/">&lt;p&gt;&lt;a rel=&quot;noopener nofollow noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;dvito.cloud&quot;&gt;dvito.cloud&lt;&#x2F;a&gt; is an AI lab for building practical products around AI infrastructure, agents, and developer tooling.&lt;&#x2F;p&gt;
+&lt;p&gt;The lab owns and builds &lt;a rel=&quot;noopener nofollow noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;zei.sh&quot;&gt;zei.sh&lt;&#x2F;a&gt;, an ephemeral microVM sandbox platform for AI agent execution. More products are in development.&lt;&#x2F;p&gt;
+</description>
+      </item>
       <item>
           <title>zei.sh: MicroVM Sandbox Platform</title>
           <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
