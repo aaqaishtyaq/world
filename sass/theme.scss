@@ -269,6 +269,56 @@ p > code {
     }
 }
 
+.home-series-count {
+    color: var(--fg4);
+    font-size: 0.6em;
+    font-weight: normal;
+}
+
+.skills .skill-group {
+    margin-bottom: 1.75em;
+}
+
+.skills .skill-group li {
+    padding-bottom: 0.35em;
+}
+
+.skills .skill-preview-columns .skill-group {
+    margin-bottom: 1.4em;
+}
+
+.skills .skill-preview-columns .skill-group h3 {
+    margin: 0 0 0.45em;
+    color: var(--blue);
+    font-size: 1em;
+}
+
+.skills .skill-preview-columns .skill-group ul {
+    margin: 0;
+}
+
+.skills .skill-preview-columns .skill-group li {
+    padding-bottom: 0.3em;
+}
+
+.home-series-index {
+    border-top: 1px solid var(--fg4);
+}
+
+.home-series-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1em;
+    padding: 0.7em 0;
+    border-bottom: 1px dashed var(--fg4);
+    border-bottom-color: var(--fg4);
+}
+
+.home-series-row span:first-child {
+    color: var(--linkcolor);
+}
+
 .home-list {
         list-style-type: "";
 }
@@ -811,6 +861,12 @@ img {
         font-size: 0.78em;
     }
 
+    .home-series-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.15em;
+    }
+
     .home-photo {
         display: none;
     }
@@ -866,5 +922,51 @@ img {
 
     .nav {
         padding: 0;
+    }
+}
+
+.home-discovery-a {
+    grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.75fr);
+    gap: 2.5em;
+}
+
+.home-discovery-side {
+    display: grid;
+    align-content: start;
+    gap: 2em;
+}
+
+.home-discovery-side .home-group + .home-group {
+    padding-top: 1em;
+    border-top: 1px dashed var(--fg4);
+}
+
+.home-discovery-a .home-series-index {
+    border-top: 1px solid var(--fg4);
+}
+
+.home-discovery-a .home-series-row {
+    padding: 0.65em 0;
+}
+
+@media (max-width: 720px) {
+    .home-discovery-a {
+        grid-template-columns: 1fr;
+        gap: 1.15em;
+    }
+
+    .home-discovery-side {
+        gap: 1.15em;
+    }
+}
+
+@media (max-width: 720px) {
+    .skills .skill-preview-columns {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .skills .skill-preview-columns .skill-group {
+        flex-basis: auto;
     }
 }

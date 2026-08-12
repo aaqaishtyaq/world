@@ -1,41 +1,42 @@
 {% import "macros/components.html" as components %}
+{% set notes = get_section(path="notes/_index.md") %}
+{% set travel = get_section(path="travel/_index.md") %}
+{% set series = get_taxonomy(kind="series", required=false) %}
 
 <p class="home-discovery-intro">
     Here are some featured posts and pages:
 </p>
-{% set series = get_taxonomy(kind="series", required=false) %}
-<div class="home-discovery">
-    {% set index = get_section(path="_index.md") %}
-    {% for s in index.subsections %}
-    {% set subsection = get_section(path=s) %}
-    {% if subsection.title != 'Uses' and subsection.title != 'Projects' %}
-        <section class="home-group">
-            <h2 class="home-group-title">
-                <a href="{{ subsection.permalink | safe}}">
-                    {{ subsection.title }}
-                </a>
-            </h2>
-        {% if subsection.pages %}
-            {{ components::post_list(pages=subsection.pages, limit=5) }}
-        {% endif %}
-        </section>
-    {% endif %}
-    {% if subsection.title == 'Blogs' and series and series.items %}
-        <section class="home-group">
+
+<div class="home-discovery home-discovery-a">
+    <section class="home-group home-group-blogs">
+        <h2 class="home-group-title">
+            <a href="{{ notes.permalink | safe }}">Blogs</a>
+        </h2>
+        {{ components::post_list(pages=notes.pages, limit=6) }}
+    </section>
+
+    <aside class="home-discovery-side">
+        {% if series and series.items %}
+        <section class="home-group home-group-series">
             <h2 class="home-group-title">
                 <a href="/series/">Series</a>
             </h2>
-            {% for item in series.items %}
-                <div class="home-subgroup">
-                    <h3 class="home-subgroup-title">
-                        <a href="{{ item.permalink | safe }}">
-                            {{ item.name }}
-                        </a>
-                    </h3>
-                    {{ components::post_list(pages=item.pages, limit=4, more_url=item.permalink) }}
-                </div>
-            {% endfor %}
+            <div class="home-series-index">
+                {% for item in series.items %}
+                <a class="home-series-row" href="{{ item.permalink | safe }}">
+                    <span>{{ item.name }}</span>
+                    <span class="home-series-count">{{ item.page_count }} posts</span>
+                </a>
+                {% endfor %}
+            </div>
         </section>
-    {% endif %}
-    {% endfor %}
+        {% endif %}
+
+        <section class="home-group home-group-travel">
+            <h2 class="home-group-title">
+                <a href="{{ travel.permalink | safe }}">Travel</a>
+            </h2>
+            {{ components::post_list(pages=travel.pages, limit=2) }}
+        </section>
+    </aside>
 </div>

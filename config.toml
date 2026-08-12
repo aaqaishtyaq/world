@@ -1,6 +1,6 @@
 base_url = "https://aaqa.dev/"
 title = "Aaqa Ishtyaq"
-description = "Aaqa Ishtyaq — Infrastructure engineer exploring ML systems, inference engineering, and distributed computing."
+description = "Aaqa Ishtyaq, infrastructure engineer exploring ML systems, inference engineering, and distributed computing."
 compile_sass = true
 build_search_index = false
 generate_feeds = true
