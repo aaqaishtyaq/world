@@ -1,5 +1,6 @@
 +++
 title = "Deploy a Django App with Git"
+description = "How to set up a Git-based deployment workflow for a Django app using a bare repository and a post-receive hook."
 date = "2018-05-07"
 +++
 

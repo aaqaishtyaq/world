@@ -1,5 +1,6 @@
 +++
 title = "Animal Farm by George Orwell"
+description = "Reflections on Animal Farm and how Orwell's plain language makes the slow slide from hope to tyranny feel inevitable."
 date = "2024-03-07"
 +++
 

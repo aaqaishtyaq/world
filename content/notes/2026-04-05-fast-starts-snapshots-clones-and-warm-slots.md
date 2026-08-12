@@ -1,5 +1,6 @@
 +++
 title = "Fast Starts: Snapshots, Clones, and Warm Slots for MicroVMs"
+description = "How snapshots, clones, and warm slots are used to minimize microVM startup time."
 date = "2026-04-05"
 draft = false
 

@@ -1,5 +1,6 @@
 +++
 title = "The Ultimate PostgreSQL Cheat Sheet"
+description = "A cheat sheet of common PostgreSQL commands, covering users, databases, tables, constraints, joins, and aggregate functions."
 date = "2018-05-09"
 +++
 

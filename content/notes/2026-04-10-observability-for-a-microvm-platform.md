@@ -1,5 +1,6 @@
 +++
 title = "Observability for a MicroVM Platform"
+description = "Why logs alone aren't enough, and what observability looks like for a microVM platform's machine lifecycle work."
 date = "2026-04-10"
 draft = false
 

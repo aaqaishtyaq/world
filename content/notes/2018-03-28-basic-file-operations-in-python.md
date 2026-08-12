@@ -1,5 +1,6 @@
 +++
 title = "Useful File Operations in Python"
+description = "A walkthrough of Python's os module for common file and directory operations: creating directories, joining paths, and checking existence."
 date = "2018-03-28"
 +++
 

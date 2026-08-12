@@ -1,5 +1,6 @@
 +++
 title = "The Idiot by Fyodor Dostoevsky"
+description = "Thoughts on Dostoevsky's The Idiot and Prince Myshkin, a character whose open goodness makes the mess around him easier to see."
 date = "2024-01-01"
 +++
 

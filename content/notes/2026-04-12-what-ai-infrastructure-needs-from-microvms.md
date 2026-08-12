@@ -1,5 +1,6 @@
 +++
 title = "What AI Infrastructure Actually Needs from MicroVMs"
+description = "What AI infrastructure actually needs from microVMs, thinking from the compute side rather than the model side."
 date = "2026-04-12"
 draft = false
 

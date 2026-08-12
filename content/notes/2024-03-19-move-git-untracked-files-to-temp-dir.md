@@ -1,5 +1,6 @@
 +++
 title = "Move untracked git files to another directory"
+description = "A one-line Unix command to move untracked files out of a Git repository into a temporary directory."
 date = "2024-03-19"
 +++
 

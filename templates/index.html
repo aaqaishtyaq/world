@@ -7,8 +7,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    {% if config.description -%}
+    {% if page and page.description -%}
+    <meta name="description" content="{{ page.description }}">
+    {% elif section and section.description -%}
+    <meta name="description" content="{{ section.description }}">
+    {% elif config.description -%}
     <meta name="description" content="{{ config.description }}">
+    {% endif %}
+
+    {% if page -%}
+    <link rel="canonical" href="{{ page.permalink | safe }}">
+    {% elif section -%}
+    <link rel="canonical" href="{{ section.permalink | safe }}">
+    {% elif term -%}
+    <link rel="canonical" href="{{ term.permalink | safe }}">
+    {% else -%}
+    <link rel="canonical" href="{{ config.base_url | safe }}">
     {% endif %}
 
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
@@ -32,6 +46,22 @@
     <link rel="preload" href="/fonts/iosevka-regular.woff2" as="font" type="font/woff2" crossorigin>
     {% endblock font %}
 
+    {% if not page and section and section.permalink == config.base_url %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{ config.extra.author }}",
+        "url": "{{ config.base_url | safe }}",
+        "description": "{{ config.description }}",
+        "sameAs": [
+            "https://github.com/{{ config.extra.github }}",
+            "https://x.com/{{ config.extra.twitter }}",
+            "https://linkedin.com/in/aaqaishtyaq"
+        ]
+    }
+    </script>
+    {% endif %}
 
     {% endblock head %}
 </head>

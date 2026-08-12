@@ -1,5 +1,6 @@
 +++
 title = "Host Reconciliation with a Host Agent"
+description = "Using a host agent for host reconciliation, and why SSH still has a place in modern infrastructure."
 date = "2026-04-09"
 draft = false
 

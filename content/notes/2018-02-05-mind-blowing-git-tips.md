@@ -1,5 +1,6 @@
 +++
 title = "Mind-Blowing Git Tips for Beginners"
+description = "A collection of practical Git tips for beginners, covering fetch vs pull, resolving merge conflicts, and managing files."
 date = "2018-02-05"
 +++
 

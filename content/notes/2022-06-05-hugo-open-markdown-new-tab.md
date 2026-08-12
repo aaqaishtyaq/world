@@ -1,5 +1,6 @@
 +++
 title = "Open markdown links in a new tab"
+description = "How to open markdown links in a new tab in Hugo using a render hook, without rewriting every link to raw HTML."
 date = "2020-06-05"
 +++
 

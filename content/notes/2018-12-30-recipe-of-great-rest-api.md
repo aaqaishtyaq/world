@@ -1,5 +1,6 @@
 +++
 title = "The Recipe for a Great RESTful API"
+description = "What makes a RESTful API great: response formatting, status codes, caching, rate limiting, and CORS."
 date = "2018-12-30"
 +++
 

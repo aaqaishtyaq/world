@@ -1,5 +1,6 @@
 +++
 title = "Making Internal DNS Boring for Private Machines"
+description = "Making internal DNS boring and reliable for private microVM machines once networking is in place."
 date = "2026-04-07"
 draft = false
 

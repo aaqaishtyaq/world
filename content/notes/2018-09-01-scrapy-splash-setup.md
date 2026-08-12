@@ -1,5 +1,6 @@
 +++
 title = "How to Set Up the Scrapy Splash Plugin"
+description = "How to set up the Scrapy-Splash plugin with Docker to scrape dynamic, JavaScript-rendered web pages."
 date = "2018-09-01"
 +++
 

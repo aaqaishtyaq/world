@@ -1,5 +1,6 @@
 +++
 title = "Contact"
+description = "Get in touch with Aaqa Ishtyaq via email, X/Twitter, GitHub, or LinkedIn."
 weight = 102
 +++
 

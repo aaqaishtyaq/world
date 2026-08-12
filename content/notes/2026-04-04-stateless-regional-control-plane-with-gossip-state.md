@@ -1,5 +1,6 @@
 +++
 title = "Stateless Regional Control Planes and Replicated State"
+description = "Designing a stateless regional control plane with gossip-replicated state, so it can die without drama."
 date = "2026-04-04"
 draft = false
 

@@ -1,6 +1,26 @@
 {% extends "index.html" %}
 
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
+
 {% block main %}
+{% if page.description %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ page.title | json_encode | safe }},
+    "description": {{ page.description | json_encode | safe }},
+    "url": {{ page.permalink | json_encode | safe }},
+    "datePublished": "{{ page.date | date(format="%Y-%m-%d") }}",
+    "dateModified": "{{ page.date | date(format="%Y-%m-%d") }}",
+    "author": {
+        "@type": "Person",
+        "name": "{{ config.extra.author }}",
+        "url": "{{ config.base_url | safe }}"
+    }
+}
+</script>
+{% endif %}
 {% set reading_stats = load_data(path="data/reading_stats.json", required=false) %}
 <article itemscope itemtype="http://schema.org/BlogPosting">
     <div itemprop="headline">

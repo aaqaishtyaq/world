@@ -1,5 +1,6 @@
 +++
 title = "Scheduling Dense Compute Without Lying to Yourself"
+description = "Thoughts on scheduling dense compute honestly, once warm starts and reservations enter the picture."
 date = "2026-04-11"
 draft = false
 

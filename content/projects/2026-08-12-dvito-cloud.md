@@ -1,5 +1,6 @@
 +++
 title = "dvito.cloud: AI Lab"
+description = "dvito.cloud is an AI lab building practical products around AI infrastructure, agents, and developer tooling, including zei.sh."
 date = "2026-08-12"
 +++
 

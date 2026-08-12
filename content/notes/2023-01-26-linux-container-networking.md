@@ -1,5 +1,6 @@
 +++
 title = "Linux Container Networking from Scratch"
+description = "Setting up Linux container networking from scratch using network namespaces, ip, and nsenter on a Lima VM."
 date = "2023-01-26"
 +++
 In this article, we will be looking into setting up networking on a linux box from scratch.

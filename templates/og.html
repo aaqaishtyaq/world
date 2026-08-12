@@ -10,8 +10,8 @@
 {% if page -%}
     {% set og_type = "article" -%}
     {% set og_title = page.title -%}
-    {% set og_description = page.description -%}
-    {% set og_url = config.base_url ~ page.permalink -%}
+    {% set og_description = page.description | default(value=config.description) -%}
+    {% set og_url = page.permalink -%}
     {% set article_published_time = page.date -%}
     {% set article_modified_time = page.date -%}
     {# Only set the og_image and twitter_card if og_preview_img exists for the page #}
@@ -19,6 +19,10 @@
         {% set og_image = page.extra.og_preview_img -%}
         {% set twitter_card = "summary_large_image" -%}
     {% endif -%}
+{% elif section and section.title -%}
+    {% set og_title = section.title -%}
+    {% set og_description = section.description | default(value=config.description) -%}
+    {% set og_url = section.permalink -%}
 {% endif -%}
 
 <meta name="title" content="{% if page and page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}">

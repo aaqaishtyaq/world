@@ -1,5 +1,6 @@
 +++
 title = "Uses"
+description = "The hardware, software, and AI agent setup Aaqa Ishtyaq uses daily for development and infrastructure work."
 weight = 101
 +++
 

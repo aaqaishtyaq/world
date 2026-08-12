@@ -1,5 +1,6 @@
 +++
 title = "Algorithms in Python: Understanding Bubble Sort"
+description = "An explanation of the Bubble Sort algorithm in Python, covering the theory, an optimized implementation, and its O(n^2) time complexity."
 date = "2018-01-08"
 +++
 

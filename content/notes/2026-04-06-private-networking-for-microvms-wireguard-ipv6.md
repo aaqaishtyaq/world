@@ -1,5 +1,6 @@
 +++
 title = "Private Networking for MicroVM Fleets with WireGuard and IPv6"
+description = "Building private networking for microVM fleets using WireGuard and IPv6."
 date = "2026-04-06"
 draft = false
 

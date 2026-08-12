@@ -1,5 +1,6 @@
 +++
 title = "Pulga, Kalga - Himachal Pradesh 2024"
+description = "Photos and notes from a trip to Pulga and Kalga, hidden villages in Himachal Pradesh's Parvati Valley."
 date = "2024-03-05"
 +++
 

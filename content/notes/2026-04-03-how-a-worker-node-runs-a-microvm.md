@@ -1,5 +1,6 @@
 +++
 title = "How a Worker Node Runs a MicroVM"
+description = "A look at what actually happens on a worker node when a microVM machine gets created."
 date = "2026-04-03"
 draft = false
 

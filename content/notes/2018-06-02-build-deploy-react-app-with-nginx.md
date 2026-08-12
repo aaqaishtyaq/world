@@ -1,5 +1,6 @@
 +++
 title = "Build and Deploy a React App with Sass and Nginx"
+description = "How to add Sass to a Create React App project and deploy the production build using rsync and Nginx."
 date = "2018-06-02"
 +++
 

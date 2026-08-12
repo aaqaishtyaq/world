@@ -1,5 +1,6 @@
 +++
 title = "Building a MicroVM Control Plane in Public"
+description = "Kicking off a series on building a distributed microVM compute platform in public, covering Firecracker, control planes, and the lessons along the way."
 date = "2026-04-01"
 draft = false
 

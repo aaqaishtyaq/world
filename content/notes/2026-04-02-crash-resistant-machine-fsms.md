@@ -1,5 +1,6 @@
 +++
 title = "Why a MicroVM Platform Needs a Crash-Resistant Machine FSM"
+description = "Why a microVM platform needs a crash-resistant finite state machine to handle machine lifecycle beyond the happy path."
 date = "2026-04-02"
 draft = false
 

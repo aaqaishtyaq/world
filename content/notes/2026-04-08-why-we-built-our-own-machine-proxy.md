@@ -1,5 +1,6 @@
 +++
 title = "Why We Built Our Own Machine Proxy"
+description = "Why we built a custom machine proxy for exposing services from microVMs instead of reaching for an off-the-shelf option."
 date = "2026-04-08"
 draft = false
 

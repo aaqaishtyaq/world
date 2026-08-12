@@ -1,5 +1,7 @@
 {% extends "index.html" %}
 
+{% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
+
 {% block main %}
     {% if section.pages %}
         <h1>{{ section.title }}</h1>

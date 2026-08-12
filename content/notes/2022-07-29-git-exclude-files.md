@@ -1,5 +1,6 @@
 +++
 title = "Git exclude files from working copy"
+description = "How to ignore files in Git both globally with .gitignore and locally with .git/info/exclude, plus how to temporarily ignore changed files."
 date = "2022-07-29"
 +++
 

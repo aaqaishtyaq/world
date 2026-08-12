@@ -1,5 +1,6 @@
 +++
 title = "The Ultimate Remote Development Setup"
+description = "Setting up a remote development environment with a VPS, Vim, Tmux, dotfiles, and Ansible for productive work from anywhere."
 date = "2018-05-08"
 +++
 

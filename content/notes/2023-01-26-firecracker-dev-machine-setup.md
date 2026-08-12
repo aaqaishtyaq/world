@@ -1,5 +1,6 @@
 +++
 title = "Firecracker Dev Machine Setup (GCP)"
+description = "Steps to set up a nested-virtualization VM on Google Compute Engine to run and test Firecracker microVMs."
 date = 2023-01-26
 +++
 

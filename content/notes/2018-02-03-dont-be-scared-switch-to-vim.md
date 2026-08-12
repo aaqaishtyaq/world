@@ -1,5 +1,6 @@
 +++
 title = "Don't Be Scared, Switch to Vim"
+description = "Why switching to Vim is worth the learning curve, with tips on getting started and a list of favorite plugins."
 date = "2018-02-03"
 +++
 

@@ -1,5 +1,6 @@
 +++
 title = "Mind-Blowing Python Tips and Tricks"
+description = "A short list of handy Python tricks for cleaner, more idiomatic day-to-day code."
 date = "2018-02-15"
 +++
 

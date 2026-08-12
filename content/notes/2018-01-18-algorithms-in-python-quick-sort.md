@@ -1,5 +1,6 @@
 +++
 title = "Algorithms in Python: Understanding Quick Sort"
+description = "How Quicksort works as a divide-and-conquer algorithm, with a Python implementation and a randomized version that avoids its worst case."
 date = "2018-01-08"
 +++
 
