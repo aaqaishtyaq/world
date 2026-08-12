@@ -6,7 +6,6 @@
         <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
             <ul>
                 {% set index = get_section(path="_index.md") %}
-                {% set series = get_taxonomy(kind="series", required=false) %}
                 {% for s in index.subsections %}
                 {% set subsection = get_section(path=s) %}
                 <li class="nav">
@@ -14,13 +13,6 @@
                         <span itemprop="name">{{ subsection.title }} </span>
                     </a>
                 </li>
-                {% if subsection.title == "Blogs" and series and series.items %}
-                <li class="nav">
-                    <a itemprop="url" href="/series/">
-                        <span itemprop="name">Series</span>
-                    </a>
-                </li>
-                {% endif %}
                 {% endfor %}
 
                 <li class="nav">
