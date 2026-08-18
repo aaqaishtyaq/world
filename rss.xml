@@ -36,6 +36,41 @@
 </description>
       </item>
       <item>
+          <title>pstbin: Client-Side Pastebin</title>
+          <pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://aaqa.dev/projects/pstbin/</link>
+          <guid>https://aaqa.dev/projects/pstbin/</guid>
+          <description xml:base="https://aaqa.dev/projects/pstbin/">&lt;p&gt;&lt;a rel=&quot;noopener nofollow noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;paste.aaqa.dev&quot;&gt;pstbin&lt;&#x2F;a&gt; is a client-side pastebin inspired by &lt;a rel=&quot;noopener nofollow noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;ix.io&quot;&gt;ix.io&lt;&#x2F;a&gt;. Paste data lives in the URL fragment; nothing is stored in a database.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;curl&lt;&#x2F;code&gt; works via a stateless encoder that compresses the body and returns a self-contained URL — that isn&#x27;t storage, it&#x27;s encoding.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; echo&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; hello&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name&quot;&gt; curl&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt; -&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt;sF&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string&quot;&gt; &amp;#39;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;paste=&amp;lt;-&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; https:&#x2F;&#x2F;paste.aaqa.dev&#x2F;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name&quot;&gt;https:&#x2F;&#x2F;paste.aaqa.dev&#x2F;#v1&#x2F;z&#x2F;…&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Highlights:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;No DB, no KV, no Blob — the URL is the paste.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;curl -F &#x27;paste=&amp;lt;-&#x27;&lt;&#x2F;code&gt; support, ix.io-style, plus a browser UI and an offline CLI helper.&lt;&#x2F;li&gt;
+&lt;li&gt;Configurable branding via env vars for anyone who wants to fork and self-host.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Source: &lt;a rel=&quot;noopener nofollow noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aaqaishtyaq&#x2F;pstbin&quot;&gt;github.com&#x2F;aaqaishtyaq&#x2F;pstbin&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>passwd: Privacy-Focused, Client-Side Password Generator</title>
+          <pubDate>Tue, 28 Jul 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://aaqa.dev/projects/password-generator/</link>
+          <guid>https://aaqa.dev/projects/password-generator/</guid>
+          <description xml:base="https://aaqa.dev/projects/password-generator/">&lt;p&gt;&lt;a rel=&quot;noopener nofollow noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;password-generator.aaqa.dev&quot;&gt;passwd&lt;&#x2F;a&gt; is a privacy-focused, fully client-side password generator — nothing is sent anywhere, and randomness comes from the browser&#x27;s Web Crypto API.&lt;&#x2F;p&gt;
+&lt;p&gt;Highlights:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Configurable length (4–64) with independent toggles for uppercase, lowercase, numbers, and symbols, plus lookalike exclusion.&lt;&#x2F;li&gt;
+&lt;li&gt;Entropy-based strength meter, local-only copy&#x2F;hide&#x2F;regenerate.&lt;&#x2F;li&gt;
+&lt;li&gt;Static site, safe to host on GitHub Pages — no backend, accounts, or analytics.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Source: &lt;a rel=&quot;noopener nofollow noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;aaqaishtyaq&#x2F;password-generator&quot;&gt;github.com&#x2F;aaqaishtyaq&#x2F;password-generator&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
           <title>What AI Infrastructure Actually Needs from MicroVMs</title>
           <pubDate>Sun, 12 Apr 2026 00:00:00 +0000</pubDate>
           <author>Unknown</author>
